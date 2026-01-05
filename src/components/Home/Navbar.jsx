@@ -14,14 +14,14 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-white text-black sticky top-0 z-50 border-b" style={{ fontFamily: 'var(--font-dm-sans)' }}>
+    <header className="bg-white text-black sticky top-0 z-50" style={{ fontFamily: 'var(--font-dm-sans)' }}>
       <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-3 items-center h-16">
           {/* Left: Brand */}
           <div className="flex items-center">
             <a href="#" className="flex items-center gap-3">
               <span className="w-8 h-8 rounded bg-black flex items-center justify-center text-white font-bold">A</span>
-              <span className="font-medium text-sm text-black">Aprica</span>
+              <span className="font-medium text-black text-xl font-outfit">Aprica</span>
             </a>
           </div>
 
@@ -38,11 +38,11 @@ export default function Navbar() {
           <div className="flex justify-end items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
               <a href="#" className="px-4 py-1 rounded-full text-sm text-black hover:bg-black/5 transition">Log in</a>
-              <a href="#" className="px-4 py-1 rounded-full bg-black text-white text-sm hover:bg-gray-800 transition">Sign up for free</a>
+              <a href="#" className="px-5 py-2 rounded-full bg-black text-white text-sm hover:bg-gray-800 transition">Sign up for free</a>
             </div>
 
             {/* Mobile menu toggle */}
-            <div className="md:hidden absolute right-10 top-1/2 -translate-y-1/2 md:static">
+            <div className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 md:static">
               <button
                 onClick={() => setOpen(!open)}
                 aria-label="Toggle menu"
@@ -75,7 +75,7 @@ export default function Navbar() {
 
           <div className="flex gap-3">
             <a href="#" className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">Log in</a>
-            <a href="#" className="flex-1 text-center px-4 py-2 bg-black text-white rounded-full">Sign up for free</a>
+            <a href="#" className="flex-1 text-center px-4 py-3 bg-black text-white rounded-full">Sign up for free</a>
           </div>
         </div>
       </div>

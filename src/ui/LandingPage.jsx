@@ -1,7 +1,10 @@
 import React from 'react'
+import { About } from '../components/Home/About'
 
 export const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div>
+      <About/>
+    </div>
   )
 }
