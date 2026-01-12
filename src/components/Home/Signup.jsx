@@ -16,7 +16,7 @@ const Signup = ({ onClose, onSwitchToLogin }) => {
       {/* Header */}
       <h1 className="text-3xl font-medium text-gray-900 mb-3">Create an account</h1>
       <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-        Join Apricafront today.
+        Join Aprica today.
       </p>
 
       {/* Social Buttons (Simplified for Signup) */}

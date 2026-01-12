@@ -16,7 +16,7 @@ const Login = ({ onClose, onSwitchToSignup }) => {
       {/* Header */}
       <h1 className="text-3xl font-medium text-gray-900 mb-3">Log in or sign up</h1>
       <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-        Welcome back to Apricafront.
+        Welcome back to Aprica.
       </p>
 
       {/* Social Buttons */}
