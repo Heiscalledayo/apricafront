@@ -53,16 +53,7 @@ export default function Navbar() {
             <div className="flex justify-end items-center">
               <div className="hidden md:flex items-center gap-3">
                 
-                {/* ================================================= */}
-                {/*  🔴 ADMIN BUTTON - PLACED HERE AS REQUESTED  🔴  */}
-                {/* ================================================= */}
-                <button 
-                  onClick={() => navigate('/admin')}
-                  className="px-4 py-2 text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-full hover:bg-red-100 transition shadow-sm mr-2"
-                >
-                  Dashboard ↗
-                </button>
-                {/* ================================================= */}
+
 
                 <button 
                   onClick={openLogin}
@@ -108,16 +99,7 @@ export default function Navbar() {
               ))}
               
               <div className="flex flex-col gap-3">
-                 {/* MOBILE ADMIN BUTTON */}
-                 <button 
-                  onClick={() => {
-                    navigate('/admin');
-                    setOpen(false);
-                  }}
-                  className="w-full text-center px-4 py-3 text-red-600 bg-red-50 border border-red-200 rounded-lg font-bold text-sm"
-                >
-                  Go to Admin Dashboard ↗
-                </button>
+
 
                 <div className="flex gap-3">
                   <button onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">

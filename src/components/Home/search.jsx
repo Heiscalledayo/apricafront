@@ -1,7 +1,50 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Search = () => {
-  // Comprehensive list of major world languages
+  // State for the Document Menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Close menu if clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
+
+  // Document Types Data
+  // position classes define where they fly out to
+  const docOptions = [
+    { 
+      id: "pdf", 
+      label: "Upload PDF", 
+      color: "bg-red-500 text-white", 
+      position: isMenuOpen ? "-translate-y-[60px]" : "translate-y-0 opacity-0 scale-0",
+      icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path> 
+    },
+    { 
+      id: "word", 
+      label: "Upload Word", 
+      color: "bg-blue-500 text-white", 
+      position: isMenuOpen ? "-translate-y-[45px] translate-x-[45px]" : "translate-y-0 translate-x-0 opacity-0 scale-0",
+      icon: <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path> 
+    },
+    { 
+      id: "img", 
+      label: "Scan Image", 
+      color: "bg-purple-500 text-white", 
+      position: isMenuOpen ? "-translate-y-[45px] -translate-x-[45px]" : "translate-y-0 translate-x-0 opacity-0 scale-0",
+      icon: <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect> 
+    },
+  ];
+
+  // Language List
   const languages = [
     "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Aymara", "Azerbaijani",
     "Bambara", "Basque", "Belarusian", "Bengali", "Bhojpuri", "Bosnian", "Bulgarian", "Burmese",
@@ -35,7 +78,50 @@ const Search = () => {
     <div className="flex flex-col items-center justify-center w-full gap-4 p-4">
 
       {/* --- Search Bar --- */}
-      <div className="flex items-center gap-3 w-full max-w-xl px-5 py-3 bg-white rounded-full shadow-lg border border-gray-200">
+      <div 
+        className="relative flex items-center gap-3 w-full max-w-xl px-4 py-3 bg-white rounded-full shadow-lg border border-gray-200 z-20"
+        ref={menuRef}
+      >
+
+        {/* 1. ANIMATED ADD BUTTON CONTAINER */}
+        <div className="relative flex items-center justify-center">
+          
+          {/* Floating Action Buttons (Behind the main button initially) */}
+          {docOptions.map((opt) => (
+            <div 
+              key={opt.id}
+              className={`absolute flex flex-col items-center justify-center transition-all duration-300 ease-out z-0 group ${opt.position}`}
+            >
+              {/* The Hover Label */}
+              <span className="absolute -top-8 px-2 py-1 bg-black text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                {opt.label}
+              </span>
+
+              {/* The Round Icon Bubble */}
+              <button 
+                className={`w-9 h-9 rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform ${opt.color}`}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  {opt.icon}
+                </svg>
+              </button>
+            </div>
+          ))}
+
+          {/* The Main Plus (+) Button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`
+              relative z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-all duration-300
+              ${isMenuOpen ? 'rotate-45 bg-gray-200 text-black' : 'rotate-0'}
+            `}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
 
         {/* Input */}
         <input
@@ -76,7 +162,7 @@ const Search = () => {
       </div>
 
       {/* --- Dropdowns Row --- */}
-      <div className="flex justify-between w-full max-w-xl px-2">
+      <div className="flex justify-between w-full max-w-xl px-2 z-10">
 
         {/* Left Dropdown (All Languages) */}
         <div className="relative group w-[48%]">
