@@ -2,9 +2,6 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LandingPage } from './ui/LandingPage'
 import Navbar from './components/Home/Navbar'
-
-// 👇 THIS IS THE FIX. 
-// We are importing from the "Admin" folder, not "AdminDashboard.jsx"
 import Dashboard from './components/Admin/Dashboard' 
 
 const App = () => {
@@ -12,7 +9,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         
-        {/* Public Website (Navbar + Landing Page) */}
+        {/* Public Website */}
         <Route path='/' element={
           <>
             <Navbar />
