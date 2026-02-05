@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+// Since Navbar, Login, and Signup are in the same 'Home' folder:
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -7,8 +7,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [authView, setAuthView] = useState("login"); 
-
-  const navigate = useNavigate(); 
 
   const openLogin = () => { setAuthView("login"); setIsModalOpen(true); setOpen(false); };
   const openSignup = () => { setAuthView("signup"); setIsModalOpen(true); setOpen(false); };
@@ -28,8 +26,6 @@ export default function Navbar() {
     <>
       <header className="bg-white text-black sticky top-0 z-50" style={{ fontFamily: 'var(--font-dm-sans)' }}>
         <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Changed grid to flex to better control spacing if needed, but grid works fine usually. 
-              Sticking to grid-cols-3 to keep your layout structure, but adjusting alignment. */}
           <div className="grid grid-cols-3 items-center h-16">
             
             {/* Left: Brand */}
@@ -52,9 +48,6 @@ export default function Navbar() {
             {/* Right: Actions */}
             <div className="flex justify-end items-center">
               <div className="hidden md:flex items-center gap-3">
-                
-
-
                 <button 
                   onClick={openLogin}
                   className="px-4 py-1 rounded-full text-sm text-black hover:bg-black/5 transition cursor-pointer"
@@ -99,8 +92,6 @@ export default function Navbar() {
               ))}
               
               <div className="flex flex-col gap-3">
-
-
                 <div className="flex gap-3">
                   <button onClick={openLogin} className="flex-1 text-center px-4 py-2 border border-black text-black rounded-full">
                     Log in
