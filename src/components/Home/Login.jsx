@@ -19,12 +19,12 @@ const Login = ({ onClose, onSwitchToSignup }) => {
   };
 
   return (
-    <div className="bg-white w-full max-w-[400px] p-10 rounded-xl shadow-lg relative text-center">
+    <div className="bg-white p-10  rounded-xl shadow-lg relative text-center">
 
       {/* Close Button */}
       <button 
         onClick={onClose}
-        className="absolute top-5 right-5 text-gray-500 hover:text-black text-2xl leading-none transition-colors"
+        className="absolute top-2 cursor-pointer right-5 text-gray-500 hover:text-black text-5xl leading-none transition-colors"
         aria-label="Close"
       >
         &times;
@@ -58,7 +58,7 @@ const Login = ({ onClose, onSwitchToSignup }) => {
         </button>
 
         {/* Microsoft */}
-        <button className="flex items-center justify-center w-full py-3 px-4 border border-gray-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
+        {/* <button className="flex items-center justify-center w-full py-3 px-4 border border-gray-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
           <svg className="w-5 h-5 mr-3" viewBox="0 0 23 23">
             <path fill="#f35325" d="M1 1h10v10H1z"/>
             <path fill="#81bc06" d="M12 1h10v10H12z"/>
@@ -66,15 +66,15 @@ const Login = ({ onClose, onSwitchToSignup }) => {
             <path fill="#ffba08" d="M12 12h10v10H12z"/>
           </svg>
           Continue with Microsoft
-        </button>
+        </button> */}
 
         {/* Phone */}
-        <button className="flex items-center justify-center w-full py-3 px-4 border border-gray-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
+        {/* <button className="flex items-center justify-center w-full py-3 px-4 border border-gray-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
           <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           Continue with phone
-        </button>
+        </button> */}
       </div>
 
       {/* Divider */}

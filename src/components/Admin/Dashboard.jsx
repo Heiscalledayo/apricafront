@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 
 const Dashboard = () => {
   return (
-    <div className="flex min-h-screen bg-gray-50 font-sans">
+    <div className="flex min-h-screen bg-gray-50 font-dm-sans">
       
       {/* 1. Sidebar Component */}
       <Sidebar />

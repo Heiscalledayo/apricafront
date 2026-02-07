@@ -2,12 +2,12 @@ import React from 'react';
 
 const Signup = ({ onClose, onSwitchToLogin }) => {
   return (
-    <div className="bg-white w-full max-w-[400px] p-10 rounded-xl shadow-lg relative text-center">
+    <div className="bg-white my-10 w-full max-w-100 p-10 rounded-xl shadow-lg relative text-center">
 
       {/* Close Button */}
       <button 
         onClick={onClose}
-        className="absolute top-5 right-5 text-gray-500 hover:text-black text-2xl leading-none transition-colors"
+        className="absolute top-2 cursor-pointer right-5 text-gray-500 hover:text-black text-5xl leading-none transition-colors"
         aria-label="Close"
       >
         &times;
@@ -15,9 +15,9 @@ const Signup = ({ onClose, onSwitchToLogin }) => {
 
       {/* Header */}
       <h1 className="text-3xl font-medium text-gray-900 mb-3">Create an account</h1>
-      <p className="text-sm text-gray-500 mb-8 leading-relaxed">
+      {/* <p className="text-sm text-gray-500 mb-8 leading-relaxed">
         Join Aprica today.
-      </p>
+      </p> */}
 
       {/* Social Buttons (Simplified for Signup) */}
       <div className="flex flex-col gap-3">
