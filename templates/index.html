@@ -3,531 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APRICA – African AI Language Platform</title>
+<title>APRICA — African AI Language Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════════════════════
-   APRICA  –  Design System
-   Primary: Forest Green | Gold | Warm Black
-══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   APRICA — Luxury Editorial Design System
+   Warm ivory · Deep charcoal · Terracotta · Sage
+═══════════════════════════════════════════════════ */
 :root {
-  --green:   #00875A;
-  --green2:  #006644;
-  --gold:    #FFAB00;
-  --gold2:   #FF8B00;
-  --dark:    #0A0A0A;
-  --dark2:   #111111;
-  --dark3:   #1A1A1A;
-  --dark4:   #222222;
-  --surface: #161616;
-  --border:  rgba(255,255,255,0.08);
-  --text:    #F0F0F0;
-  --muted:   #888888;
-  --radius:  14px;
-  --shadow:  0 4px 24px rgba(0,0,0,0.4);
+  --cream:    #FAF7F2;
+  --cream2:   #F3EDE3;
+  --cream3:   #EDE4D6;
+  --parchment:#E8DDD0;
+  --ink:      #1C1914;
+  --ink2:     #2D2820;
+  --ink3:     #3D3730;
+  --muted:    #7A7068;
+  --muted2:   #A89F95;
+  --terra:    #C4622D;
+  --terra2:   #A84E22;
+  --terra3:   rgba(196,98,45,0.10);
+  --sage:     #4A7C6F;
+  --sage2:    #3A6259;
+  --sage3:    rgba(74,124,111,0.10);
+  --border:   rgba(28,25,20,0.09);
+  --border2:  rgba(28,25,20,0.16);
+  --shadow:   0 2px 20px rgba(28,25,20,0.07);
+  --shadow2:  0 8px 40px rgba(28,25,20,0.12);
+  --r:        18px;
+  --r-sm:     12px;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--dark);
-  color: var(--text);
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.6;
 }
 
-/* ─── SIDEBAR ──────────────────────────────────────── */
+/* ── LAYOUT ── */
+.app { display: flex; height: 100vh; }
+
+/* ── SIDEBAR ── */
 .sidebar {
-  width: 260px;
-  min-width: 260px;
-  background: var(--dark2);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  z-index: 10;
+  width: 260px; min-width: 260px;
+  background: var(--ink);
+  color: var(--cream);
+  display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden;
+  position: fixed; top: 0; left: 0; height: 100vh;
+  z-index: 100;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-
-.sidebar-logo {
-  padding: 24px 20px 16px;
-  border-bottom: 1px solid var(--border);
+.sidebar-top {
+  padding: 32px 28px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-
+.logo-lockup { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 .logo-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 4px;
-}
-
-.logo-icon {
-  width: 38px; height: 38px;
-  background: linear-gradient(135deg, var(--green), var(--gold));
-  border-radius: 10px;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--terra), #E07B3A);
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  box-shadow: 0 0 20px rgba(0,135,90,0.4);
+  font-size: 20px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(196,98,45,0.4);
 }
-
-.logo-text {
-  font-family: 'Space Grotesk', sans-serif;
+.logo-name {
+  font-family: 'Playfair Display', serif;
   font-size: 22px; font-weight: 700;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #fff, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px; color: var(--cream);
 }
-
-.logo-tagline {
-  font-size: 10px; color: var(--muted); letter-spacing: 1px;
-  text-transform: uppercase; margin-left: 48px;
+.logo-sub {
+  font-size: 10px; color: rgba(250,247,242,0.4);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-left: 52px;
 }
-
-.sidebar-section {
-  padding: 16px 12px 8px;
-  font-size: 9px; font-weight: 700;
-  color: var(--muted); letter-spacing: 2px;
-  text-transform: uppercase;
+.nav-group { padding: 20px 16px 8px; }
+.nav-group-label {
+  font-size: 9px; font-weight: 600;
+  color: rgba(250,247,242,0.3);
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 0 12px; margin-bottom: 6px;
 }
-
 .nav-item {
   display: flex; align-items: center; gap: 12px;
-  padding: 11px 16px;
-  border-radius: 10px;
-  margin: 2px 8px;
-  cursor: pointer;
+  padding: 11px 14px; border-radius: 10px;
+  margin-bottom: 2px; cursor: pointer;
   font-size: 13.5px; font-weight: 500;
-  color: var(--muted);
-  transition: all 0.2s;
-  position: relative;
+  color: rgba(250,247,242,0.55);
+  transition: all 0.2s; position: relative;
 }
-.nav-item:hover { background: var(--dark3); color: var(--text); }
-.nav-item.active { background: rgba(0,135,90,0.15); color: var(--green); }
-.nav-item.active .nav-icon { color: var(--green); }
-
-.nav-icon { font-size: 16px; width: 20px; text-align: center; }
-
-.nav-badge {
-  margin-left: auto;
-  background: var(--gold2);
-  color: #000;
-  font-size: 9px; font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 20px;
+.nav-item:hover { background: rgba(255,255,255,0.06); color: var(--cream); }
+.nav-item.active { background: var(--terra3); color: #F0C9A8; }
+.nav-item.active .nav-dot { background: var(--terra); box-shadow: 0 0 8px var(--terra); }
+.nav-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; flex-shrink: 0; margin-left: auto; transition: all 0.2s; }
+.nav-badge { margin-left: auto; font-size: 9px; font-weight: 700; background: var(--terra); color: #fff; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.5px; }
+.nav-icon { font-size: 15px; width: 18px; text-align: center; opacity: 0.8; }
+.sidebar-bottom {
+  margin-top: auto; padding: 20px 20px 28px;
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
-
-.sidebar-footer {
-  margin-top: auto;
-  padding: 16px 12px;
-  border-top: 1px solid var(--border);
+.lang-selector {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 11px 14px;
+  display: flex; align-items: center; gap: 10px;
 }
+.lang-selector select {
+  background: transparent; border: none;
+  color: rgba(250,247,242,0.8);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px; cursor: pointer; outline: none; flex: 1;
+}
+.lang-selector select option { background: var(--ink2); }
 
-.lang-selector-mini {
-  background: var(--dark3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
+/* ── MAIN ── */
+.main { flex: 1; margin-left: 260px; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* ── TOPBAR ── */
+.topbar {
+  height: 62px; display: flex; align-items: center;
+  padding: 0 36px;
+  background: rgba(250,247,242,0.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0; gap: 14px;
+  position: sticky; top: 0; z-index: 50;
+}
+.hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 6px; border-radius: 8px; color: var(--ink); }
+.hamburger:hover { background: var(--cream2); }
+.topbar-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; color: var(--ink); }
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.status-chip {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--sage3); border: 1px solid rgba(74,124,111,0.2);
+  border-radius: 20px; padding: 6px 14px;
+}
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); animation: breathe 2.5s ease-in-out infinite; }
+@keyframes breathe { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.75);} }
+.status-label { font-size: 11px; font-weight: 600; color: var(--sage); letter-spacing: 0.3px; }
+
+/* ── CONTENT ── */
+.content { flex: 1; overflow-y: auto; padding: 36px 40px 60px; }
+
+/* ── PANELS ── */
+.panel { display: none; }
+.panel.active { display: block; animation: rise 0.45s cubic-bezier(0.4,0,0.2,1); }
+@keyframes rise { from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:none;} }
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink); border-radius: 28px;
+  padding: 52px 56px; margin-bottom: 32px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 32px; align-items: center;
+  overflow: hidden; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(196,98,45,0.2), transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -60px; left: 30%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(74,124,111,0.12), transparent 65%);
+  pointer-events: none;
+}
+.hero-kicker {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--terra); margin-bottom: 16px;
   display: flex; align-items: center; gap: 8px;
 }
-.lang-selector-mini select {
-  background: transparent; border: none; color: var(--text);
-  font-size: 13px; flex: 1; cursor: pointer; outline: none;
+.hero-kicker::before { content: ''; width: 24px; height: 1px; background: var(--terra); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px; font-weight: 900; line-height: 1.08;
+  margin-bottom: 18px; color: var(--cream); letter-spacing: -0.5px;
 }
-.lang-selector-mini select option { background: var(--dark3); }
+.hero h1 em { font-style: italic; color: #E09060; }
+.hero p { font-size: 15px; line-height: 1.75; color: rgba(250,247,242,0.55); max-width: 440px; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-flags { font-size: 48px; line-height: 1; display: flex; flex-direction: column; gap: 8px; align-items: center; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); position: relative; z-index: 1; }
 
-/* ─── MAIN AREA ────────────────────────────────────── */
-.main {
-  flex: 1; display: flex; flex-direction: column;
-  overflow: hidden; background: var(--dark);
-}
-
-/* ─── TOP BAR ──────────────────────────────────────── */
-.topbar {
-  padding: 0 28px;
-  height: 60px;
-  display: flex; align-items: center; gap: 16px;
-  border-bottom: 1px solid var(--border);
-  background: var(--dark2);
-  flex-shrink: 0;
-}
-
-.page-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 17px; font-weight: 600;
-}
-
-.topbar-actions {
-  margin-left: auto;
-  display: flex; align-items: center; gap: 10px;
-}
-
-.status-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.status-label { font-size: 12px; color: var(--muted); }
-
-/* ─── CONTENT AREA ─────────────────────────────────── */
-.content {
-  flex: 1; overflow-y: auto; padding: 28px;
-}
-
-/* ─── PANELS ────────────────────────────────────────── */
-.panel { display: none; animation: fadeIn 0.3s; }
-.panel.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
-/* ─── HERO BANNER ───────────────────────────────────── */
-.hero {
-  background: linear-gradient(135deg, var(--dark3) 0%, rgba(0,135,90,0.15) 100%);
-  border: 1px solid rgba(0,135,90,0.2);
-  border-radius: 18px;
-  padding: 32px 36px;
-  margin-bottom: 24px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.hero-left h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 28px; font-weight: 700;
-  margin-bottom: 8px;
-}
-.hero-left h1 span { color: var(--gold); }
-.hero-left p { color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 480px; }
-.hero-flags { font-size: 36px; letter-spacing: 4px; }
-
-/* ─── STAT CARDS ────────────────────────────────────── */
-.stats-row {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 14px; margin-bottom: 24px;
-}
+/* ── STATS ── */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 32px; }
 .stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  text-align: center;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+  padding: 24px 22px; box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden;
 }
-.stat-num { font-size: 28px; font-weight: 800; color: var(--green); }
-.stat-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.stat-card::before { content: attr(data-icon); position: absolute; right: 16px; top: 16px; font-size: 28px; opacity: 0.12; }
+.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow2); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--terra); line-height: 1; margin-bottom: 6px; }
+.stat-lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.3px; font-weight: 500; }
 
-/* ─── CARDS ─────────────────────────────────────────── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 20px;
+/* ── FEATURE GRID ── */
+.feat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.feat-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+  padding: 26px 22px 30px; cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: var(--shadow); position: relative; overflow: hidden;
 }
-.card-title {
-  font-size: 15px; font-weight: 700;
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px;
+.feat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--terra), #E8956A);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
-.card-icon {
-  width: 32px; height: 32px;
-  background: rgba(0,135,90,0.15);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px;
+.feat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow2); border-color: var(--border2); }
+.feat-card:hover::after { transform: scaleX(1); }
+.feat-icon { font-size: 32px; margin-bottom: 16px; display: block; line-height: 1; }
+.feat-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+.feat-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+.feat-arrow { position: absolute; top: 22px; right: 22px; font-size: 11px; color: var(--muted2); transition: all 0.25s; font-weight: 600; }
+.feat-card:hover .feat-arrow { color: var(--terra); transform: translate(2px,-2px); }
+
+/* ── CARDS ── */
+.card { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 32px; margin-bottom: 20px; box-shadow: var(--shadow); }
+.card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.card-icon { width: 42px; height: 42px; background: var(--terra3); border: 1px solid rgba(196,98,45,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.card-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--ink); }
+.card-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── CHIPS ── */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.chip {
+  padding: 8px 20px; border-radius: 100px; font-size: 12.5px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border2); color: var(--muted);
+  background: var(--cream2); transition: all 0.2s; letter-spacing: 0.2px;
 }
+.chip:hover { border-color: var(--terra); color: var(--terra); background: var(--terra3); }
+.chip.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
-/* ─── GRID LAYOUTS ──────────────────────────────────── */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-
-/* ─── FORM CONTROLS ─────────────────────────────────── */
-.form-group { margin-bottom: 14px; }
-.form-label { font-size: 11px; font-weight: 600; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px; }
-
-textarea, input[type="text"], input[type="url"], select {
-  width: 100%;
-  background: var(--dark3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  padding: 12px 14px;
-  transition: border-color 0.2s;
-  outline: none;
-  resize: vertical;
+/* ── FORM ── */
+.fl { font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.fg { margin-bottom: 18px; }
+textarea, input[type=text], input[type=url], select {
+  width: 100%; background: var(--cream2); border: 1.5px solid var(--border2);
+  border-radius: var(--r-sm); color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif; font-size: 14px;
+  padding: 14px 16px; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none; resize: vertical; -webkit-appearance: none;
 }
-textarea:focus, input:focus, select:focus { border-color: var(--green); }
-select option { background: var(--dark3); }
-textarea { min-height: 110px; }
+textarea:focus, input:focus, select:focus { border-color: var(--terra); background: #fff; box-shadow: 0 0 0 4px rgba(196,98,45,0.08); }
+textarea { min-height: 128px; line-height: 1.65; }
+select option { background: #fff; }
 
+/* ── BUTTONS ── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; cursor: pointer; border: none; border-radius: 10px;
-  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px;
-  padding: 12px 22px; transition: all 0.2s; text-decoration: none;
+  gap: 8px; cursor: pointer; border: none; border-radius: var(--r-sm);
+  font-family: 'Instrument Sans', sans-serif; font-weight: 600; font-size: 13.5px;
+  padding: 13px 24px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  text-decoration: none; letter-spacing: 0.2px; position: relative; overflow: hidden;
 }
-.btn-primary { background: var(--green); color: #fff; }
-.btn-primary:hover { background: var(--green2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,135,90,0.35); }
-.btn-gold { background: var(--gold); color: #000; }
-.btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
-.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-.btn-outline:hover { border-color: var(--green); color: var(--green); }
-.btn-sm { padding: 8px 14px; font-size: 12px; border-radius: 8px; }
+.btn-primary { background: var(--ink); color: var(--cream); }
+.btn-primary:hover { background: var(--ink2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(28,25,20,0.22); }
+.btn-terra { background: var(--terra); color: #fff; }
+.btn-terra:hover { background: var(--terra2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,98,45,0.32); }
+.btn-sage { background: var(--sage); color: #fff; }
+.btn-sage:hover { background: var(--sage2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,124,111,0.3); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); }
+.btn-ghost:hover { border-color: var(--ink); background: var(--cream2); }
+.btn-sm { padding: 9px 16px; font-size: 12px; border-radius: 9px; }
 .btn-full { width: 100%; }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none!important; box-shadow: none!important; }
+.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
 
-.btn-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+/* ── TWO COL ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-/* ─── RESULT BLOCK ──────────────────────────────────── */
-.result-box {
-  background: var(--dark3);
-  border: 1px solid rgba(0,135,90,0.25);
-  border-radius: 10px;
-  padding: 16px;
-  margin-top: 14px;
-  min-height: 60px;
-  line-height: 1.7;
-  font-size: 14px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  display: none;
-}
-.result-box.visible { display: block; }
+/* ── RESULT ── */
+.result-box { background: var(--cream2); border: 1.5px solid var(--border2); border-radius: var(--r-sm); padding: 20px; margin-top: 18px; min-height: 60px; line-height: 1.8; font-size: 14px; white-space: pre-wrap; word-break: break-word; display: none; }
+.result-box.on { display: block; animation: popIn 0.35s cubic-bezier(0.4,0,0.2,1); }
+@keyframes popIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:none;} }
+.result-placeholder { background: var(--cream2); border: 1.5px dashed var(--border2); border-radius: var(--r-sm); padding: 20px; min-height: 128px; display: flex; align-items: center; justify-content: center; font-family: 'Instrument Serif', serif; font-style: italic; color: var(--muted2); font-size: 14px; }
+.rtag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: var(--sage3); color: var(--sage); border-radius: 6px; padding: 3px 9px; margin-bottom: 12px; }
 
-.result-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 10px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.result-lang { font-size: 11px; font-weight: 700; color: var(--green);
-  text-transform: uppercase; letter-spacing: 1px; }
+/* ── LOADER ── */
+.loader { display: none; align-items: center; gap: 12px; padding: 18px 0; font-size: 13px; color: var(--muted); font-style: italic; }
+.loader.on { display: flex; }
+.spinner { width: 20px; height: 20px; border: 2px solid var(--border2); border-top-color: var(--terra); border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; }
+@keyframes spin { to{transform:rotate(360deg);} }
 
-/* ─── LOADER ────────────────────────────────────────── */
-.loader {
-  display: none; align-items: center; gap: 10px;
-  padding: 14px 0; font-size: 13px; color: var(--muted);
-}
-.loader.active { display: flex; }
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid var(--border);
-  border-top-color: var(--green);
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
+/* ── CHAT ── */
+.chat-msgs { height: 360px; overflow-y: auto; background: var(--cream2); border: 1.5px solid var(--border2); border-radius: var(--r-sm) var(--r-sm) 0 0; padding: 20px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
+.msg { max-width: 76%; padding: 13px 18px; border-radius: 16px; font-size: 14px; line-height: 1.65; }
+.msg-user { background: var(--ink); color: var(--cream); align-self: flex-end; border-radius: 16px 16px 4px 16px; font-weight: 500; }
+.msg-bot { background: #fff; color: var(--ink); align-self: flex-start; border: 1px solid var(--border); border-radius: 16px 16px 16px 4px; }
+.msg-t { font-size: 10px; opacity: 0.4; margin-top: 5px; }
+.chat-bar { display: flex; border: 1.5px solid var(--border2); border-top: none; border-radius: 0 0 var(--r-sm) var(--r-sm); overflow: hidden; background: #fff; }
+.chat-bar input { flex: 1; border: none; background: transparent; padding: 14px 18px; font-size: 14px; font-family: 'Instrument Sans', sans-serif; color: var(--ink); }
+.chat-bar input:focus { outline: none; }
+.chat-send { background: var(--ink); color: var(--cream); border: none; padding: 0 22px; font-family: 'Instrument Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+.chat-send:hover { background: var(--terra); }
+.chat-clr { background: var(--cream2); color: var(--muted); border: none; border-left: 1px solid var(--border); padding: 0 14px; cursor: pointer; font-size: 16px; transition: all 0.2s; }
+.chat-clr:hover { background: var(--cream3); color: var(--ink); }
 
-/* ─── CHAT ──────────────────────────────────────────── */
-.chat-messages {
-  height: 360px; overflow-y: auto;
-  background: var(--dark3); border: 1px solid var(--border);
-  border-radius: 10px; padding: 14px;
-  display: flex; flex-direction: column; gap: 12px;
-  scroll-behavior: smooth;
-}
-.msg { max-width: 80%; padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.6; }
-.msg-user { background: var(--green); color: #fff; align-self: flex-end; border-radius: 12px 12px 4px 12px; }
-.msg-bot { background: var(--dark4); color: var(--text); align-self: flex-start; border-radius: 12px 12px 12px 4px; }
-.msg-time { font-size: 10px; opacity: 0.5; margin-top: 4px; }
+/* ── AUDIO ── */
+.audio-box { background: var(--sage3); border: 1px solid rgba(74,124,111,0.2); border-radius: var(--r-sm); padding: 18px; margin-top: 18px; display: none; }
+.audio-box.on { display: block; animation: popIn 0.3s ease; }
+.audio-box audio { width: 100%; margin-top: 10px; border-radius: 8px; }
+.audio-lbl { font-size: 10px; font-weight: 700; color: var(--sage); letter-spacing: 2px; text-transform: uppercase; }
 
-.chat-input-row { display: flex; gap: 10px; margin-top: 12px; }
-.chat-input-row input { flex: 1; }
+/* ── DROP ZONE ── */
+.drop-zone { border: 2px dashed var(--border2); border-radius: var(--r-sm); padding: 40px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--cream2); position: relative; }
+.drop-zone:hover, .drop-zone.drag { border-color: var(--terra); background: rgba(196,98,45,0.04); }
+.drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop-icon { font-size: 38px; margin-bottom: 12px; line-height: 1; }
+.drop-text { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+.drop-text small { font-size: 11.5px; color: var(--muted2); }
+.drop-name { font-size: 12px; color: var(--terra); margin-top: 10px; font-weight: 600; }
 
-/* ─── AUDIO PLAYER ──────────────────────────────────── */
-.audio-player {
-  background: var(--dark3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px; margin-top: 14px;
-  display: none;
-}
-.audio-player.visible { display: block; }
-.audio-player audio { width: 100%; margin-top: 8px; }
+/* ── VOICE GRID ── */
+.voice-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 22px; }
+.vc { background: var(--cream2); border: 1.5px solid var(--border2); border-radius: var(--r-sm); padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.vc:hover { border-color: var(--terra); background: var(--terra3); }
+.vc.on { border-color: var(--ink); background: var(--ink); }
+.vc.on .vc-n, .vc.on .vc-a { color: var(--cream); }
+.vc-e { font-size: 26px; margin-bottom: 7px; line-height: 1; }
+.vc-n { font-size: 11px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.vc-a { font-size: 10px; color: var(--muted); }
 
-/* ─── FILE DROP ─────────────────────────────────────── */
-.file-drop {
-  border: 2px dashed var(--border);
-  border-radius: 10px;
-  padding: 32px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-}
-.file-drop:hover, .file-drop.drag-over { border-color: var(--green); background: rgba(0,135,90,0.05); }
-.file-drop input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-.file-drop-icon { font-size: 32px; margin-bottom: 8px; }
-.file-drop-text { font-size: 13px; color: var(--muted); }
-.file-name { font-size: 12px; color: var(--green); margin-top: 6px; font-weight: 600; }
+/* ── RECORD ── */
+.rec-center { text-align: center; padding: 36px 24px; background: var(--cream2); border: 1.5px solid var(--border2); border-radius: var(--r-sm); }
+.rec-btn { width: 68px; height: 68px; border-radius: 50%; background: var(--terra); color: #fff; border: none; cursor: pointer; font-size: 22px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s; margin-bottom: 14px; box-shadow: 0 4px 20px rgba(196,98,45,0.35); }
+.rec-btn:hover { transform: scale(1.07); }
+.rec-btn.on { background: #C0392B; animation: recRing 1.5s infinite; }
+@keyframes recRing { 0%{box-shadow:0 0 0 0 rgba(192,57,43,0.4);} 70%{box-shadow:0 0 0 20px rgba(192,57,43,0);} 100%{box-shadow:0 0 0 0 rgba(192,57,43,0);} }
+.rec-hint { font-size: 12.5px; color: var(--muted); font-style: italic; }
+.prog-wrap { display: none; margin-top: 14px; }
+.prog-wrap.on { display: block; }
+.prog-track { background: var(--parchment); border-radius: 4px; height: 3px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg,var(--terra),var(--sage)); border-radius: 4px; transition: width 0.3s; }
 
-/* ─── VOICE GRID ────────────────────────────────────── */
-.voice-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.voice-card {
-  background: var(--dark3); border: 1px solid var(--border);
-  border-radius: 10px; padding: 12px; text-align: center;
-  cursor: pointer; transition: all 0.2s;
-}
-.voice-card:hover { border-color: var(--green); }
-.voice-card.selected { border-color: var(--green); background: rgba(0,135,90,0.1); }
-.voice-card .vc-icon { font-size: 22px; margin-bottom: 4px; }
-.voice-card .vc-name { font-size: 11px; font-weight: 600; }
-.voice-card .vc-accent { font-size: 10px; color: var(--muted); }
+/* ── TABS ── */
+.tabs { display: flex; gap: 4px; background: var(--cream2); border-radius: var(--r-sm); padding: 4px; margin-bottom: 22px; border: 1.5px solid var(--border2); }
+.tab { flex: 1; padding: 9px 14px; border: none; border-radius: 9px; background: transparent; color: var(--muted); font-family: 'Instrument Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.tab.on { background: var(--ink); color: var(--cream); font-weight: 600; }
 
-/* ─── RECORD BTN ────────────────────────────────────── */
-.record-btn {
-  width: 60px; height: 60px; border-radius: 50%;
-  background: var(--green);
-  border: none; cursor: pointer;
-  font-size: 22px; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s; margin: 0 auto;
-  box-shadow: 0 0 0 0 rgba(0,135,90,0.4);
-}
-.record-btn.recording {
-  background: #e53e3e;
-  animation: recordPulse 1.5s infinite;
-}
-@keyframes recordPulse {
-  0% { box-shadow: 0 0 0 0 rgba(229,62,62,0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(229,62,62,0); }
-  100% { box-shadow: 0 0 0 0 rgba(229,62,62,0); }
-}
+/* ── TOAST ── */
+#toasts { position: fixed; top: 22px; right: 22px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 14px 18px; font-size: 13px; max-width: 300px; animation: slideR 0.35s cubic-bezier(0.4,0,0.2,1), slideOut 0.35s 2.9s forwards; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(28,25,20,0.14); font-weight: 500; }
+.toast.ok { border-left: 3px solid var(--sage); }
+.toast.err { border-left: 3px solid #C0392B; }
+@keyframes slideR { from{transform:translateX(110%);opacity:0;} to{transform:none;opacity:1;} }
+@keyframes slideOut { to{transform:translateX(110%);opacity:0;} }
 
-/* ─── TABS ──────────────────────────────────────────── */
-.tab-bar {
-  display: flex; gap: 4px;
-  background: var(--dark3); border-radius: 10px;
-  padding: 4px; margin-bottom: 20px;
-  border: 1px solid var(--border);
-}
-.tab-btn {
-  flex: 1; padding: 9px 14px; border: none; border-radius: 7px;
-  background: transparent; color: var(--muted);
-  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-  cursor: pointer; transition: all 0.2s;
-}
-.tab-btn.active { background: var(--green); color: #fff; }
-
-/* ─── LANG CHIPS ────────────────────────────────────── */
-.lang-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-.lang-chip {
-  padding: 7px 16px; border-radius: 20px;
-  font-size: 12px; font-weight: 600; cursor: pointer;
-  border: 1px solid var(--border); color: var(--muted);
-  background: var(--dark3); transition: all 0.2s;
-}
-.lang-chip:hover { border-color: var(--green); color: var(--green); }
-.lang-chip.active { background: var(--green); color: #fff; border-color: var(--green); }
-
-/* ─── FEATURE CARDS (HOME) ──────────────────────────── */
-.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px; cursor: pointer;
-  transition: all 0.25s;
-  text-decoration: none; color: var(--text);
-}
-.feature-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-.feature-card .fc-icon { font-size: 28px; margin-bottom: 12px; }
-.feature-card .fc-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
-.feature-card .fc-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-/* ─── PROGRESS BAR ──────────────────────────────────── */
-.progress { background: var(--border); border-radius: 4px; height: 4px; margin-top: 10px; overflow: hidden; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--gold)); border-radius: 4px; transition: width 0.3s; }
-
-/* ─── TOAST ─────────────────────────────────────────── */
-.toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
-.toast {
-  background: var(--dark4); border: 1px solid var(--border);
-  border-radius: 10px; padding: 12px 16px;
-  font-size: 13px; max-width: 300px;
-  animation: slideIn 0.3s, fadeOut 0.4s 2.6s forwards;
-  display: flex; align-items: center; gap: 10px;
-}
-.toast.success { border-left: 3px solid var(--green); }
-.toast.error { border-left: 3px solid #e53e3e; }
-@keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform:none; opacity:1; } }
-@keyframes fadeOut { to { opacity: 0; transform: translateX(100%); } }
-
-/* ─── SCROLLBAR ─────────────────────────────────────── */
+/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+::-webkit-scrollbar-thumb { background: var(--parchment); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted2); }
 
-/* ─── RESPONSIVE ADJUSTMENTS ────────────────────────── */
-@media (max-width: 1100px) {
-  .stats-row { grid-template-columns: repeat(2,1fr); }
-  .feature-grid { grid-template-columns: repeat(2,1fr); }
+/* ══ RESPONSIVE ═══════════════════════════════════════ */
+@media (max-width:1100px) { .stats-row { grid-template-columns:repeat(2,1fr); } .feat-grid { grid-template-columns:repeat(2,1fr); } .voice-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:900px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: none; box-shadow: 4px 0 40px rgba(28,25,20,0.2); }
+  .main { margin-left: 0; }
+  .hamburger { display: flex; }
+  .content { padding: 24px 20px 80px; }
+  .hero { padding: 32px 28px; } .hero h1 { font-size: 34px; }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width:640px) {
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .hero { grid-template-columns: 1fr; } .hero-flags { flex-direction: row; } .hero h1 { font-size: 28px; }
+  .card { padding: 22px 18px; } .content { padding: 18px 16px 80px; } .topbar { padding: 0 18px; }
   .voice-grid { grid-template-columns: repeat(2,1fr); }
+  .chat-msgs { height: 260px; }
+  /* bottom nav */
+  .sidebar { transform: none!important; position: fixed; bottom: 0; left: 0; right: 0; top: auto; width: 100%!important; height: 64px; flex-direction: row; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); overflow: visible; box-shadow: none!important; }
+  .sidebar-top, .nav-group-label, .sidebar-bottom, .nav-dot, .nav-badge { display: none!important; }
+  .nav-group { padding: 0; display: contents; }
+  .nav-item { flex-direction: column; gap: 3px; padding: 8px 4px; margin: 0; border-radius: 0; flex: 1; align-items: center; justify-content: center; font-size: 9px; letter-spacing: 0.3px; color: rgba(250,247,242,0.5); }
+  .nav-item.active { background: transparent; color: #F0C9A8; }
+  .nav-icon { font-size: 20px; width: auto; }
+  .main { margin-left: 0; margin-bottom: 64px; }
+  .hamburger { display: none; }
 }
 </style>
 </head>
 <body>
+<div id="toasts"></div>
+<div class="app">
 
-<!-- ══ TOAST CONTAINER ══ -->
-<div class="toast-container" id="toasts"></div>
-
-<!-- ══ SIDEBAR ══════════════════════════════════════════ -->
-<div class="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-mark">
-      <div class="logo-icon">🌍</div>
-      <div class="logo-text">APRICA</div>
-    </div>
-    <div class="logo-tagline">African AI Language Platform</div>
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="logo-lockup"><div class="logo-mark">🌍</div><div class="logo-name">APRICA</div></div>
+    <div class="logo-sub">African AI Language Platform</div>
   </div>
-
-  <div class="sidebar-section">Core Features</div>
-  <div class="nav-item active" onclick="showPanel('home')">
-    <span class="nav-icon">🏠</span> Dashboard
+  <div class="nav-group">
+    <div class="nav-group-label">Core</div>
+    <div class="nav-item active" onclick="go('home')"><span class="nav-icon">🏠</span> Dashboard <span class="nav-dot"></span></div>
+    <div class="nav-item" onclick="go('translate')"><span class="nav-icon">🔤</span> Text Translation <span class="nav-dot"></span></div>
+    <div class="nav-item" onclick="go('url')"><span class="nav-icon">🌐</span> Website Translator <span class="nav-dot"></span></div>
+    <div class="nav-item" onclick="go('document')"><span class="nav-icon">📄</span> Document Translator <span class="nav-dot"></span></div>
   </div>
-  <div class="nav-item" onclick="showPanel('translate')">
-    <span class="nav-icon">🔤</span> Text Translation
+  <div class="nav-group">
+    <div class="nav-group-label">AI Tools</div>
+    <div class="nav-item" onclick="go('chat')"><span class="nav-icon">💬</span> AI Chatbot <span class="nav-badge">AI</span></div>
+    <div class="nav-item" onclick="go('tts')"><span class="nav-icon">🔊</span> Text to Voice <span class="nav-dot"></span></div>
+    <div class="nav-item" onclick="go('stt')"><span class="nav-icon">🎙️</span> Voice to Text <span class="nav-dot"></span></div>
   </div>
-  <div class="nav-item" onclick="showPanel('url')">
-    <span class="nav-icon">🌐</span> Website Translator
+  <div class="nav-group">
+    <div class="nav-group-label">Advanced</div>
+    <div class="nav-item" onclick="go('video')"><span class="nav-icon">🎬</span> Video Translator <span class="nav-badge">NEW</span></div>
+    <div class="nav-item" onclick="go('book')"><span class="nav-icon">📚</span> Book Translator <span class="nav-dot"></span></div>
   </div>
-  <div class="nav-item" onclick="showPanel('document')">
-    <span class="nav-icon">📄</span> Document Translator
-  </div>
-
-  <div class="sidebar-section">AI Tools</div>
-  <div class="nav-item" onclick="showPanel('chat')">
-    <span class="nav-icon">💬</span> AI Chatbot
-    <span class="nav-badge">AI</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('tts')">
-    <span class="nav-icon">🔊</span> Text to Voice
-  </div>
-  <div class="nav-item" onclick="showPanel('stt')">
-    <span class="nav-icon">🎙️</span> Voice to Text
-  </div>
-
-  <div class="sidebar-section">Advanced</div>
-  <div class="nav-item" onclick="showPanel('video')">
-    <span class="nav-icon">🎬</span> Video Translator
-    <span class="nav-badge">NEW</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('book')">
-    <span class="nav-icon">📚</span> Book Translator
-  </div>
-
-  <div class="sidebar-footer">
-    <div class="lang-selector-mini">
+  <div class="sidebar-bottom">
+    <div class="lang-selector">
       <span>🌍</span>
-      <select id="globalLang" onchange="updateGlobalLang()">
+      <select id="globalLang" onchange="syncLang()">
         <option value="yo">Yoruba 🇳🇬</option>
         <option value="ha">Hausa 🇳🇬</option>
         <option value="sw">Swahili 🇰🇪</option>
@@ -535,917 +437,337 @@ textarea { min-height: 110px; }
       </select>
     </div>
   </div>
-</div>
+</nav>
 
-<!-- ══ MAIN ══════════════════════════════════════════════ -->
+<!-- MAIN -->
 <div class="main">
-  <div class="topbar">
-    <span id="topbarTitle" class="page-title">🏠 Dashboard</span>
-    <div class="topbar-actions">
-      <div class="status-dot"></div>
-      <span class="status-label">APRICA Live</span>
+  <header class="topbar">
+    <button class="hamburger" id="ham" onclick="toggleSb()">☰</button>
+    <span id="topTitle" class="topbar-title">Dashboard</span>
+    <div class="topbar-right">
+      <div class="status-chip"><div class="status-dot"></div><span class="status-label">APRICA Live</span></div>
     </div>
-  </div>
+  </header>
 
   <div class="content">
 
-    <!-- ══ PANEL: HOME ════════════════════════════════════ -->
+    <!-- HOME -->
     <div class="panel active" id="panel-home">
       <div class="hero">
-        <div class="hero-left">
-          <h1>Welcome to <span>APRICA</span> 🌍</h1>
-          <p>Africa's first AI-powered language platform. Translate, transcribe, and communicate in Nigerian Pidgin, Yoruba, Hausa, and Swahili — with authentic African voices.</p>
-          <div style="margin-top:18px">
-            <button class="btn btn-primary" onclick="showPanel('translate')">Start Translating →</button>
-            <button class="btn btn-outline" style="margin-left:10px" onclick="showPanel('chat')">Try Chatbot</button>
+        <div>
+          <div class="hero-kicker">Africa's AI Language Platform</div>
+          <h1>The <em>Voice</em> of<br>a Continent</h1>
+          <p>Translate, transcribe, and speak in Nigerian Pidgin, Yoruba, Hausa, and Swahili — powered by the world's most advanced AI.</p>
+          <div class="hero-btns">
+            <button class="btn btn-terra" onclick="go('translate')">Start Translating →</button>
+            <button class="btn btn-ghost" style="border-color:rgba(250,247,242,0.2);color:rgba(250,247,242,0.75);" onclick="go('chat')">Try Chatbot</button>
           </div>
         </div>
-        <div class="hero-flags">🇳🇬🇰🇪🇬🇭🇿🇦</div>
+        <div class="hero-flags"><span>🇳🇬</span><span>🇰🇪</span></div>
       </div>
-
       <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-num">4</div>
-          <div class="stat-lbl">African Languages</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">8</div>
-          <div class="stat-lbl">Voice Profiles</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">8</div>
-          <div class="stat-lbl">AI Features</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">GPT-4o</div>
-          <div class="stat-lbl">AI Engine</div>
-        </div>
+        <div class="stat-card" data-icon="🌍"><div class="stat-num">4</div><div class="stat-lbl">African Languages</div></div>
+        <div class="stat-card" data-icon="🎙️"><div class="stat-num">8</div><div class="stat-lbl">Voice Profiles</div></div>
+        <div class="stat-card" data-icon="✨"><div class="stat-num">8</div><div class="stat-lbl">AI Features</div></div>
+        <div class="stat-card" data-icon="🤖"><div class="stat-num" style="font-size:26px">GPT‑4o</div><div class="stat-lbl">AI Engine</div></div>
       </div>
-
-      <div class="feature-grid">
-        <div class="feature-card" onclick="showPanel('translate')">
-          <div class="fc-icon">🔤</div>
-          <div class="fc-title">Text Translation</div>
-          <div class="fc-desc">Instantly translate English, French and more into Yoruba, Hausa, Swahili or Nigerian Pidgin.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('url')">
-          <div class="fc-icon">🌐</div>
-          <div class="fc-title">Website Translation</div>
-          <div class="fc-desc">Paste any URL and get the entire website content translated into your chosen African language.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('document')">
-          <div class="fc-icon">📄</div>
-          <div class="fc-title">Document Translation</div>
-          <div class="fc-desc">Upload PDF, Word or TXT files for full translation and AI-powered summarization.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('chat')">
-          <div class="fc-icon">💬</div>
-          <div class="fc-title">AI Chatbot</div>
-          <div class="fc-desc">Chat with an AI that responds natively in your chosen African language.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('tts')">
-          <div class="fc-icon">🔊</div>
-          <div class="fc-title">Text to Voice</div>
-          <div class="fc-desc">Convert text into audio with Nigerian, Kenyan, British and American accent voice profiles.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('stt')">
-          <div class="fc-icon">🎙️</div>
-          <div class="fc-title">Voice to Text</div>
-          <div class="fc-desc">Record or upload audio and get instant transcription + translation in African languages.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('video')">
-          <div class="fc-icon">🎬</div>
-          <div class="fc-title">Video Translation</div>
-          <div class="fc-desc">Upload a video and get it dubbed in an African language with authentic voice synthesis.</div>
-        </div>
-        <div class="feature-card" onclick="showPanel('book')">
-          <div class="fc-icon">📚</div>
-          <div class="fc-title">Book Translator</div>
-          <div class="fc-desc">Translate and summarize entire books and documents into African languages.</div>
-        </div>
+      <div class="feat-grid">
+        <div class="feat-card" onclick="go('translate')"><span class="feat-arrow">↗</span><span class="feat-icon">🔤</span><div class="feat-title">Text Translation</div><div class="feat-desc">Translate English or French into Yoruba, Hausa, Swahili, or Nigerian Pidgin.</div></div>
+        <div class="feat-card" onclick="go('url')"><span class="feat-arrow">↗</span><span class="feat-icon">🌐</span><div class="feat-title">Website Translator</div><div class="feat-desc">Paste any URL and get the whole site translated in seconds.</div></div>
+        <div class="feat-card" onclick="go('document')"><span class="feat-arrow">↗</span><span class="feat-icon">📄</span><div class="feat-title">Document Translator</div><div class="feat-desc">Upload PDF, Word, or TXT files for full translation and summarization.</div></div>
+        <div class="feat-card" onclick="go('chat')"><span class="feat-arrow">↗</span><span class="feat-icon">💬</span><div class="feat-title">AI Chatbot</div><div class="feat-desc">Converse with an AI that replies natively in your African language.</div></div>
+        <div class="feat-card" onclick="go('tts')"><span class="feat-arrow">↗</span><span class="feat-icon">🔊</span><div class="feat-title">Text to Voice</div><div class="feat-desc">8 authentic voice profiles — Nigerian, Kenyan, British, American.</div></div>
+        <div class="feat-card" onclick="go('stt')"><span class="feat-arrow">↗</span><span class="feat-icon">🎙️</span><div class="feat-title">Voice to Text</div><div class="feat-desc">Record or upload audio for instant transcription and translation.</div></div>
+        <div class="feat-card" onclick="go('video')"><span class="feat-arrow">↗</span><span class="feat-icon">🎬</span><div class="feat-title">Video Translation</div><div class="feat-desc">Upload a video and dub it into an African language with real voices.</div></div>
+        <div class="feat-card" onclick="go('book')"><span class="feat-arrow">↗</span><span class="feat-icon">📚</span><div class="feat-title">Book Translator</div><div class="feat-desc">Translate and summarize entire books into African languages.</div></div>
       </div>
     </div>
 
-    <!-- ══ PANEL: TEXT TRANSLATION ════════════════════════ -->
+    <!-- TEXT TRANSLATION -->
     <div class="panel" id="panel-translate">
       <div class="card">
-        <div class="card-title"><div class="card-icon">🔤</div> Text Translation</div>
-
-        <div class="lang-chips" id="translate-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'translate')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'translate')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'translate')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'translate')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">🔤</div><div><div class="card-title">Text Translation</div><div class="card-sub">Translate into any of the 4 African languages</div></div></div>
+        <div class="chips" id="translate-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'translate')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'translate')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'translate')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'translate')">🇳🇬 Pidgin</div>
         </div>
-
         <div class="two-col">
-          <div>
-            <div class="form-label">Source Text (English / French / Other)</div>
-            <textarea id="translateInput" placeholder="Type or paste text to translate..." rows="7"></textarea>
-          </div>
-          <div>
-            <div class="form-label">Translation Result</div>
-            <div id="translateResult" class="result-box" style="min-height:160px; display:block; background:var(--dark3); border-radius:10px; padding:14px; color:var(--muted); font-style:italic;">
-              Translation will appear here...
-            </div>
-          </div>
+          <div><label class="fl">Source Text</label><textarea id="translateInput" placeholder="Type or paste text here…" rows="7"></textarea></div>
+          <div><label class="fl">Translation</label><div id="translateResult" class="result-placeholder">Your translation will appear here…</div></div>
         </div>
-
-        <div class="loader" id="translate-loader">
-          <div class="spinner"></div> Translating...
-        </div>
-
+        <div class="loader" id="translate-loader"><div class="spinner"></div> Translating…</div>
         <div class="btn-row">
           <button class="btn btn-primary" onclick="doTranslate()">🔤 Translate</button>
-          <button class="btn btn-gold" onclick="doTranslateThenTTS()">🔊 Translate + Speak</button>
-          <button class="btn btn-outline" onclick="clearField('translateInput','translateResult')">🗑️ Clear</button>
+          <button class="btn btn-sage" onclick="doTranslateThenTTS()">🔊 Translate + Speak</button>
+          <button class="btn btn-ghost" onclick="clearTrans()">Clear</button>
         </div>
-
-        <div id="translate-audio" class="audio-player">
-          <div class="form-label">🔊 Audio Output</div>
-          <audio id="translate-audio-el" controls></audio>
-        </div>
+        <div id="translate-audio" class="audio-box"><div class="audio-lbl">🎵 Audio Output</div><audio id="translate-audio-el" controls></audio></div>
       </div>
     </div>
 
-    <!-- ══ PANEL: URL TRANSLATION ═════════════════════════ -->
+    <!-- URL -->
     <div class="panel" id="panel-url">
       <div class="card">
-        <div class="card-title"><div class="card-icon">🌐</div> Website Translator</div>
-
-        <div class="lang-chips" id="url-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'url')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'url')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'url')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'url')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">🌐</div><div><div class="card-title">Website Translator</div><div class="card-sub">Translate any webpage into African languages</div></div></div>
+        <div class="chips" id="url-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'url')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'url')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'url')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'url')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="form-group">
-          <div class="form-label">Website URL</div>
-          <input type="url" id="urlInput" placeholder="https://example.com">
-        </div>
-
-        <div class="loader" id="url-loader"><div class="spinner"></div> Fetching and translating website...</div>
-
+        <div class="fg"><label class="fl">Website URL</label><input type="url" id="urlInput" placeholder="https://example.com"></div>
+        <div class="loader" id="url-loader"><div class="spinner"></div> Fetching and translating…</div>
         <div class="btn-row">
-          <button class="btn btn-primary" onclick="doUrlTranslate()">🌐 Translate Website</button>
-          <button class="btn btn-outline" onclick="document.getElementById('urlInput').value=''">🗑️ Clear</button>
+          <button class="btn btn-primary" onclick="doUrl()">🌐 Translate Website</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('urlInput').value=''">Clear</button>
         </div>
-
         <div id="url-result" class="result-box">
-          <div class="result-header">
-            <span class="result-lang" id="url-lang-badge"></span>
-          </div>
-          <strong id="url-title" style="display:block;margin-bottom:12px;color:var(--gold)"></strong>
-          <div id="url-body" style="white-space:pre-wrap;line-height:1.8;"></div>
+          <div class="rtag" id="url-badge"></div>
+          <strong id="url-title" style="display:block;margin-bottom:12px;color:var(--terra);font-family:'Playfair Display',serif;font-size:16px;"></strong>
+          <div id="url-body" style="white-space:pre-wrap;line-height:1.85;"></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ PANEL: DOCUMENT TRANSLATION ════════════════════ -->
+    <!-- DOCUMENT -->
     <div class="panel" id="panel-document">
       <div class="card">
-        <div class="card-title"><div class="card-icon">📄</div> Document Translation</div>
-
-        <div class="lang-chips" id="doc-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'doc')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'doc')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'doc')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'doc')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">📄</div><div><div class="card-title">Document Translator</div><div class="card-sub">PDF, Word, TXT — translate and summarize</div></div></div>
+        <div class="chips" id="doc-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'doc')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'doc')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'doc')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'doc')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="tab-bar">
-          <button class="tab-btn active" onclick="setDocAction('translate',this)">📝 Translate</button>
-          <button class="tab-btn" onclick="setDocAction('summarize',this)">📋 Summarize</button>
-          <button class="tab-btn" onclick="setDocAction('both',this)">✨ Both</button>
+        <div class="tabs">
+          <button class="tab on" onclick="setDA('translate',this)">📝 Translate</button>
+          <button class="tab" onclick="setDA('summarize',this)">📋 Summarize</button>
+          <button class="tab" onclick="setDA('both',this)">✨ Both</button>
         </div>
-
-        <div class="file-drop" id="docDropZone">
-          <input type="file" id="docFile" accept=".pdf,.txt,.docx" onchange="fileSelected(this,'docDropZone','docFileName')">
-          <div class="file-drop-icon">📎</div>
-          <div class="file-drop-text">Drop PDF, TXT or Word document here<br><small>or click to browse</small></div>
-          <div class="file-name" id="docFileName"></div>
+        <div class="drop-zone" id="docDrop">
+          <input type="file" id="docFile" accept=".pdf,.txt,.docx" onchange="fp(this,'docDrop','docName')">
+          <div class="drop-icon">📎</div>
+          <div class="drop-text">Drop PDF, TXT or Word document here<br><small>or click to browse</small></div>
+          <div class="drop-name" id="docName"></div>
         </div>
-
-        <div class="loader" id="doc-loader"><div class="spinner"></div> Processing document...</div>
-
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="doDocTranslate()">📄 Process Document</button>
-        </div>
-
+        <div class="loader" id="doc-loader"><div class="spinner"></div> Processing document…</div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="doDoc()">📄 Process Document</button></div>
         <div id="doc-result" class="result-box">
-          <div class="result-header">
-            <span class="result-lang" id="doc-lang-badge"></span>
-            <span id="doc-char-count" style="font-size:11px;color:var(--muted)"></span>
-          </div>
-          <div id="doc-summary"></div>
-          <div id="doc-translation"></div>
+          <div class="rtag" id="doc-badge"></div><span id="doc-chars" style="float:right;font-size:11px;color:var(--muted2)"></span>
+          <div id="doc-summary"></div><div id="doc-trans"></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ PANEL: CHATBOT ══════════════════════════════════ -->
+    <!-- CHAT -->
     <div class="panel" id="panel-chat">
       <div class="card">
-        <div class="card-title"><div class="card-icon">💬</div> APRICA AI Chatbot</div>
-
-        <div class="lang-chips" id="chat-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'chat')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'chat')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'chat')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'chat')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">💬</div><div><div class="card-title">AI Chatbot</div><div class="card-sub">Converse in any African language</div></div></div>
+        <div class="chips" id="chat-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'chat')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'chat')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'chat')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'chat')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="chat-messages" id="chatMessages">
-          <div class="msg msg-bot">
-            <div>👋 Ẹ káàbọ̀! I am APRICA, your African language AI assistant. Ask me anything in English or your preferred African language!</div>
-            <div class="msg-time">Now</div>
-          </div>
+        <div class="chat-msgs" id="chatMsgs">
+          <div class="msg msg-bot"><div>👋 <em>Ẹ káàbọ̀!</em> I'm APRICA — your African language AI assistant. Ask me anything in English or your preferred African language!</div><div class="msg-t">Now</div></div>
         </div>
-
-        <div class="chat-input-row">
-          <input type="text" id="chatInput" placeholder="Ask anything... (in any language)" onkeydown="if(event.key==='Enter')sendChat()">
-          <button class="btn btn-primary" onclick="sendChat()">Send →</button>
-          <button class="btn btn-outline btn-sm" onclick="clearChat()" title="Clear chat">🗑️</button>
+        <div class="chat-bar">
+          <input type="text" id="chatIn" placeholder="Ask anything… press Enter to send" onkeydown="if(event.key==='Enter')sendChat()">
+          <button class="chat-send" onclick="sendChat()">Send →</button>
+          <button class="chat-clr" onclick="clearChat()" title="Clear">🗑</button>
         </div>
       </div>
     </div>
 
-    <!-- ══ PANEL: TTS ══════════════════════════════════════ -->
+    <!-- TTS -->
     <div class="panel" id="panel-tts">
       <div class="card">
-        <div class="card-title"><div class="card-icon">🔊</div> Text to Voice</div>
-
-        <div class="lang-chips" id="tts-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'tts')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'tts')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'tts')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'tts')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">🔊</div><div><div class="card-title">Text to Voice</div><div class="card-sub">8 authentic African and international voices</div></div></div>
+        <div class="chips" id="tts-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'tts')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'tts')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'tts')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'tts')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="form-label" style="margin-bottom:10px">Select Voice Profile</div>
-        <div class="voice-grid" id="voiceGrid">
-          <div class="voice-card selected" data-voice="nigerian_female" onclick="selectVoice(this)">
-            <div class="vc-icon">👩🏾</div>
-            <div class="vc-name">Nigerian Female</div>
-            <div class="vc-accent">Nigerian Accent</div>
-          </div>
-          <div class="voice-card" data-voice="nigerian_male" onclick="selectVoice(this)">
-            <div class="vc-icon">👨🏾</div>
-            <div class="vc-name">Nigerian Male</div>
-            <div class="vc-accent">Nigerian Accent</div>
-          </div>
-          <div class="voice-card" data-voice="kenyan_female" onclick="selectVoice(this)">
-            <div class="vc-icon">👩🏿</div>
-            <div class="vc-name">Kenyan Female</div>
-            <div class="vc-accent">Kenyan Accent</div>
-          </div>
-          <div class="voice-card" data-voice="kenyan_male" onclick="selectVoice(this)">
-            <div class="vc-icon">👨🏿</div>
-            <div class="vc-name">Kenyan Male</div>
-            <div class="vc-accent">Kenyan Accent</div>
-          </div>
-          <div class="voice-card" data-voice="british_female" onclick="selectVoice(this)">
-            <div class="vc-icon">👩🏻</div>
-            <div class="vc-name">British Female</div>
-            <div class="vc-accent">British Accent</div>
-          </div>
-          <div class="voice-card" data-voice="british_male" onclick="selectVoice(this)">
-            <div class="vc-icon">👨🏻</div>
-            <div class="vc-name">British Male</div>
-            <div class="vc-accent">British Accent</div>
-          </div>
-          <div class="voice-card" data-voice="american_female" onclick="selectVoice(this)">
-            <div class="vc-icon">👩🏼</div>
-            <div class="vc-name">American Female</div>
-            <div class="vc-accent">American Accent</div>
-          </div>
-          <div class="voice-card" data-voice="american_male" onclick="selectVoice(this)">
-            <div class="vc-icon">👨🏼</div>
-            <div class="vc-name">American Male</div>
-            <div class="vc-accent">American Accent</div>
-          </div>
+        <label class="fl" style="margin-bottom:12px">Select Voice Profile</label>
+        <div class="voice-grid">
+          <div class="vc on" data-voice="nigerian_female" onclick="pv(this)"><div class="vc-e">👩🏾</div><div class="vc-n">Nigerian Female</div><div class="vc-a">Nigerian</div></div>
+          <div class="vc" data-voice="nigerian_male" onclick="pv(this)"><div class="vc-e">👨🏾</div><div class="vc-n">Nigerian Male</div><div class="vc-a">Nigerian</div></div>
+          <div class="vc" data-voice="kenyan_female" onclick="pv(this)"><div class="vc-e">👩🏿</div><div class="vc-n">Kenyan Female</div><div class="vc-a">Kenyan</div></div>
+          <div class="vc" data-voice="kenyan_male" onclick="pv(this)"><div class="vc-e">👨🏿</div><div class="vc-n">Kenyan Male</div><div class="vc-a">Kenyan</div></div>
+          <div class="vc" data-voice="british_female" onclick="pv(this)"><div class="vc-e">👩🏻</div><div class="vc-n">British Female</div><div class="vc-a">British</div></div>
+          <div class="vc" data-voice="british_male" onclick="pv(this)"><div class="vc-e">👨🏻</div><div class="vc-n">British Male</div><div class="vc-a">British</div></div>
+          <div class="vc" data-voice="american_female" onclick="pv(this)"><div class="vc-e">👩🏼</div><div class="vc-n">American Female</div><div class="vc-a">American</div></div>
+          <div class="vc" data-voice="american_male" onclick="pv(this)"><div class="vc-e">👨🏼</div><div class="vc-n">American Male</div><div class="vc-a">American</div></div>
         </div>
-
-        <div class="form-group" style="margin-top:16px">
-          <div class="form-label">Text to Speak</div>
-          <textarea id="ttsInput" placeholder="Enter text to convert to speech..." rows="4"></textarea>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <input type="checkbox" id="ttsAutoTranslate" style="width:auto">
-          <label for="ttsAutoTranslate" style="font-size:13px;cursor:pointer">Auto-translate text before speaking</label>
-        </div>
-
-        <div class="loader" id="tts-loader"><div class="spinner"></div> Generating audio...</div>
-
+        <div class="fg"><label class="fl">Text to Speak</label><textarea id="ttsIn" placeholder="Enter text to convert to speech…" rows="4"></textarea></div>
+        <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer;margin-bottom:4px;color:var(--muted)">
+          <input type="checkbox" id="ttsAuto" style="width:auto;accent-color:var(--terra)"> Auto-translate before speaking
+        </label>
+        <div class="loader" id="tts-loader"><div class="spinner"></div> Generating audio…</div>
         <div class="btn-row">
           <button class="btn btn-primary" onclick="doTTS()">🔊 Generate Audio</button>
-          <button class="btn btn-outline" onclick="document.getElementById('ttsInput').value=''">🗑️ Clear</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('ttsIn').value=''">Clear</button>
         </div>
-
-        <div id="tts-player" class="audio-player">
-          <div class="form-label">🎵 Generated Audio</div>
-          <audio id="tts-audio-el" controls></audio>
-        </div>
+        <div id="tts-player" class="audio-box"><div class="audio-lbl">🎵 Generated Audio</div><audio id="tts-audio" controls></audio></div>
       </div>
     </div>
 
-    <!-- ══ PANEL: STT ══════════════════════════════════════ -->
+    <!-- STT -->
     <div class="panel" id="panel-stt">
       <div class="card">
-        <div class="card-title"><div class="card-icon">🎙️</div> Voice to Text</div>
-
-        <div class="lang-chips" id="stt-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'stt')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'stt')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'stt')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'stt')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">🎙️</div><div><div class="card-title">Voice to Text</div><div class="card-sub">Transcribe and translate audio in real-time</div></div></div>
+        <div class="chips" id="stt-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'stt')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'stt')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'stt')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'stt')">🇳🇬 Pidgin</div>
         </div>
-
         <div class="two-col">
-          <div>
-            <div class="card" style="text-align:center; padding:32px; background:var(--dark3)">
-              <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Record your voice in real-time</p>
-              <button class="record-btn" id="recordBtn" onclick="toggleRecord()">🎙️</button>
-              <p id="recordStatus" style="font-size:12px;color:var(--muted);margin-top:12px">Click to start recording</p>
-              <div class="progress" id="recordProgress" style="display:none">
-                <div class="progress-fill" id="recordBar" style="width:0%"></div>
-              </div>
-            </div>
+          <div class="rec-center">
+            <p style="font-size:12.5px;color:var(--muted);margin-bottom:18px;font-style:italic;">Record your voice in real-time</p>
+            <button class="rec-btn" id="recBtn" onclick="toggleRec()">🎙️</button>
+            <p id="recStatus" class="rec-hint">Click to start recording</p>
+            <div class="prog-wrap" id="recProg"><div class="prog-track"><div class="prog-fill" id="recBar" style="width:0%"></div></div></div>
           </div>
-
           <div>
-            <div class="form-label">Or upload an audio file</div>
-            <div class="file-drop" style="min-height:140px">
-              <input type="file" id="sttFile" accept="audio/*,video/*" onchange="fileSelected(this,null,'sttFileName')">
-              <div class="file-drop-icon">🎵</div>
-              <div class="file-drop-text">Drop audio/video file<br><small>MP3, WAV, M4A, MP4...</small></div>
-              <div class="file-name" id="sttFileName"></div>
+            <label class="fl">Or upload an audio file</label>
+            <div class="drop-zone" style="min-height:140px">
+              <input type="file" id="sttFile" accept="audio/*,video/*" onchange="fp(this,null,'sttName')">
+              <div class="drop-icon">🎵</div>
+              <div class="drop-text">Drop audio or video<br><small>MP3, WAV, M4A, MP4…</small></div>
+              <div class="drop-name" id="sttName"></div>
             </div>
             <button class="btn btn-primary btn-full" style="margin-top:12px" onclick="doSTTFile()">📝 Transcribe File</button>
           </div>
         </div>
-
-        <div class="loader" id="stt-loader"><div class="spinner"></div> Transcribing...</div>
-
+        <div class="loader" id="stt-loader"><div class="spinner"></div> Transcribing…</div>
         <div id="stt-result" class="result-box">
-          <div class="result-header">
-            <span class="result-lang" id="stt-lang-badge">Transcription</span>
-          </div>
-          <div><strong style="font-size:11px;color:var(--muted)">ORIGINAL SPEECH:</strong></div>
-          <div id="stt-original" style="margin:8px 0 16px;color:var(--text)"></div>
-          <div><strong style="font-size:11px;color:var(--muted)">TRANSLATED:</strong></div>
-          <div id="stt-translated" style="margin-top:8px;color:var(--green)"></div>
+          <div class="rtag" id="stt-badge">Transcription</div>
+          <p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Original Speech</p>
+          <div id="stt-orig" style="margin-bottom:18px;"></div>
+          <p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Translated</p>
+          <div id="stt-trans" style="color:var(--sage);font-weight:500;"></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ PANEL: VIDEO TRANSLATION ═══════════════════════ -->
+    <!-- VIDEO -->
     <div class="panel" id="panel-video">
       <div class="card">
-        <div class="card-title"><div class="card-icon">🎬</div> Video Translation</div>
-
-        <div class="lang-chips" id="video-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'video')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'video')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'video')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'video')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">🎬</div><div><div class="card-title">Video Translation</div><div class="card-sub">Dub videos into African languages</div></div></div>
+        <div class="chips" id="video-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'video')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'video')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'video')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'video')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="two-col" style="margin-bottom:16px">
-          <div>
-            <div class="form-label">Select Voice</div>
-            <select id="videoVoice">
-              <option value="nigerian_female">Nigerian Female</option>
-              <option value="nigerian_male">Nigerian Male</option>
-              <option value="kenyan_female">Kenyan Female</option>
-              <option value="kenyan_male">Kenyan Male</option>
-              <option value="british_female">British Female</option>
-              <option value="british_male">British Male</option>
-              <option value="american_female">American Female</option>
-              <option value="american_male">American Male</option>
-            </select>
-          </div>
-          <div></div>
+        <div class="fg" style="max-width:280px"><label class="fl">Voice Profile</label>
+          <select id="vidVoice"><option value="nigerian_female">Nigerian Female</option><option value="nigerian_male">Nigerian Male</option><option value="kenyan_female">Kenyan Female</option><option value="kenyan_male">Kenyan Male</option><option value="british_female">British Female</option><option value="british_male">British Male</option><option value="american_female">American Female</option><option value="american_male">American Male</option></select>
         </div>
-
-        <div class="file-drop" id="videoDropZone">
-          <input type="file" id="videoFile" accept="video/*" onchange="fileSelected(this,'videoDropZone','videoFileName')">
-          <div class="file-drop-icon">🎬</div>
-          <div class="file-drop-text">Drop your video file here<br><small>MP4, MOV, AVI, MKV... (max 50MB)</small></div>
-          <div class="file-name" id="videoFileName"></div>
+        <div class="drop-zone" id="vidDrop">
+          <input type="file" id="vidFile" accept="video/*" onchange="fp(this,'vidDrop','vidName')">
+          <div class="drop-icon">🎬</div>
+          <div class="drop-text">Drop your video file here<br><small>MP4, MOV, AVI, MKV… (max 50MB)</small></div>
+          <div class="drop-name" id="vidName"></div>
         </div>
-
-        <div class="loader" id="video-loader"><div class="spinner"></div> Translating video (this may take a moment)...</div>
-
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="doVideoTranslate()">🎬 Translate Video</button>
-        </div>
-
+        <div class="loader" id="video-loader"><div class="spinner"></div> Translating video…</div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="doVideo()">🎬 Translate Video</button></div>
         <div id="video-result" class="result-box">
-          <div class="result-header">
-            <span class="result-lang" id="video-lang-badge"></span>
-          </div>
-          <div style="margin-bottom:12px">
-            <strong style="font-size:11px;color:var(--muted)">ORIGINAL TRANSCRIPT:</strong>
-            <div id="video-original" style="margin-top:6px;color:var(--text)"></div>
-          </div>
-          <div style="margin-bottom:12px">
-            <strong style="font-size:11px;color:var(--muted)">TRANSLATION:</strong>
-            <div id="video-translated" style="margin-top:6px;color:var(--green)"></div>
-          </div>
-          <div id="video-audio-section" style="display:none;margin-top:12px">
-            <strong style="font-size:11px;color:var(--muted)">🔊 TRANSLATED AUDIO:</strong>
-            <audio id="video-audio-el" controls style="width:100%;margin-top:8px"></audio>
-          </div>
+          <div class="rtag" id="vid-badge"></div>
+          <p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Original</p>
+          <div id="vid-orig" style="margin-bottom:14px;"></div>
+          <p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Translation</p>
+          <div id="vid-trans" style="color:var(--sage);font-weight:500;margin-bottom:14px;"></div>
+          <div id="vid-audio" style="display:none"><p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">🔊 Translated Audio</p><audio id="vid-audio-el" controls style="width:100%;"></audio></div>
         </div>
       </div>
     </div>
 
-    <!-- ══ PANEL: BOOK ═════════════════════════════════════ -->
+    <!-- BOOK -->
     <div class="panel" id="panel-book">
       <div class="card">
-        <div class="card-title"><div class="card-icon">📚</div> Book Translator & Summarizer</div>
-
-        <div class="lang-chips" id="book-chips">
-          <div class="lang-chip active" data-lang="yo" onclick="selectLang(this,'book')">🇳🇬 Yoruba</div>
-          <div class="lang-chip" data-lang="ha" onclick="selectLang(this,'book')">🇳🇬 Hausa</div>
-          <div class="lang-chip" data-lang="sw" onclick="selectLang(this,'book')">🇰🇪 Swahili</div>
-          <div class="lang-chip" data-lang="pcm" onclick="selectLang(this,'book')">🇳🇬 Nigerian Pidgin</div>
+        <div class="card-head"><div class="card-icon">📚</div><div><div class="card-title">Book Translator</div><div class="card-sub">Translate and summarize entire books</div></div></div>
+        <div class="chips" id="book-chips">
+          <div class="chip on" data-lang="yo" onclick="pick(this,'book')">🇳🇬 Yoruba</div>
+          <div class="chip" data-lang="ha" onclick="pick(this,'book')">🇳🇬 Hausa</div>
+          <div class="chip" data-lang="sw" onclick="pick(this,'book')">🇰🇪 Swahili</div>
+          <div class="chip" data-lang="pcm" onclick="pick(this,'book')">🇳🇬 Pidgin</div>
         </div>
-
-        <div class="file-drop" id="bookDropZone">
-          <input type="file" id="bookFile" accept=".pdf,.txt" onchange="fileSelected(this,'bookDropZone','bookFileName')">
-          <div class="file-drop-icon">📚</div>
-          <div class="file-drop-text">Drop your book / document (PDF or TXT)<br><small>Up to 50MB supported</small></div>
-          <div class="file-name" id="bookFileName"></div>
+        <div class="drop-zone" id="bookDrop">
+          <input type="file" id="bookFile" accept=".pdf,.txt" onchange="fp(this,'bookDrop','bookName')">
+          <div class="drop-icon">📚</div>
+          <div class="drop-text">Drop your book or document (PDF or TXT)<br><small>Up to 50MB supported</small></div>
+          <div class="drop-name" id="bookName"></div>
         </div>
-
-        <div class="loader" id="book-loader"><div class="spinner"></div> Analyzing and translating book...</div>
-
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="doBookTranslate()">📚 Translate & Summarize</button>
-        </div>
-
+        <div class="loader" id="book-loader"><div class="spinner"></div> Analyzing and translating…</div>
+        <div class="btn-row"><button class="btn btn-primary" onclick="doBook()">📚 Translate & Summarize</button></div>
         <div id="book-result" class="result-box">
-          <div class="result-header">
-            <span class="result-lang" id="book-lang-badge"></span>
-            <span id="book-word-count" style="font-size:11px;color:var(--muted)"></span>
-          </div>
-          <div style="margin-bottom:16px">
-            <strong style="font-size:12px;color:var(--gold)">📋 SUMMARY:</strong>
-            <div id="book-summary" style="margin-top:8px;line-height:1.8;"></div>
-          </div>
-          <div style="border-top:1px solid var(--border);padding-top:16px">
-            <strong style="font-size:12px;color:var(--gold)">📖 TRANSLATED PREVIEW (First Section):</strong>
-            <div id="book-sample" style="margin-top:8px;line-height:1.8;color:var(--muted);font-size:13px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><div class="rtag" id="book-badge"></div><span id="book-wc" style="font-size:11px;color:var(--muted2)"></span></div>
+          <p style="font-family:'Playfair Display',serif;font-size:14px;color:var(--terra);margin-bottom:10px;">📋 Summary</p>
+          <div id="book-sum" style="margin-bottom:20px;line-height:1.85;white-space:pre-wrap;"></div>
+          <div style="border-top:1px solid var(--border);padding-top:18px;">
+            <p style="font-family:'Playfair Display',serif;font-size:14px;color:var(--terra);margin-bottom:10px;">📖 Translated Preview</p>
+            <div id="book-sample" style="line-height:1.85;color:var(--muted);font-size:13px;white-space:pre-wrap;"></div>
           </div>
         </div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+  </div>
+</div>
+</div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-//  APRICA Frontend Logic
-// ═══════════════════════════════════════════════════════
+const S={langs:{translate:'yo',url:'yo',doc:'yo',chat:'yo',tts:'yo',stt:'yo',video:'yo',book:'yo'},docAct:'translate',voice:'nigerian_female',chatHist:[],mediaRec:null,recording:false,recTimer:null};
+const TITLES={home:'Dashboard',translate:'Text Translation',url:'Website Translator',document:'Document Translator',chat:'AI Chatbot',tts:'Text to Voice',stt:'Voice to Text',video:'Video Translator',book:'Book Translator'};
 
-// State
-const state = {
-  langs: { translate:'yo', url:'yo', doc:'yo', chat:'yo', tts:'yo', stt:'yo', video:'yo', book:'yo' },
-  docAction: 'translate',
-  selectedVoice: 'nigerian_female',
-  chatHistory: [],
-  mediaRecorder: null,
-  recording: false,
-  recordTimer: null
-};
+function go(n){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));document.getElementById('panel-'+n).classList.add('active');document.getElementById('topTitle').textContent=TITLES[n]||n;document.querySelectorAll('.nav-item').forEach(i=>{if(i.getAttribute('onclick')?.includes("'"+n+"'"))i.classList.add('active');});document.getElementById('sidebar').classList.remove('open');}
+function toggleSb(){document.getElementById('sidebar').classList.toggle('open');}
+function pick(el,p){el.closest('.chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');S.langs[p]=el.dataset.lang;document.getElementById('globalLang').value=el.dataset.lang;}
+function syncLang(){const l=document.getElementById('globalLang').value;Object.keys(S.langs).forEach(k=>{S.langs[k]=l;const c=document.getElementById(k+'-chips');if(c)c.querySelectorAll('.chip').forEach(ch=>ch.classList.toggle('on',ch.dataset.lang===l));});}
+function pv(el){document.querySelectorAll('.vc').forEach(v=>v.classList.remove('on'));el.classList.add('on');S.voice=el.dataset.voice;}
+function setDA(a,el){S.docAct=a;document.querySelectorAll('.tabs .tab').forEach(b=>b.classList.remove('on'));el.classList.add('on');}
+function fp(input,dropId,nameId){const f=input.files[0];if(f){document.getElementById(nameId).textContent='📎 '+f.name;if(dropId)document.getElementById(dropId).style.borderColor='var(--terra)';}}
+function ld(id,on){document.getElementById(id+'-loader').classList.toggle('on',on);}
+function toast(msg,type='ok'){const d=document.createElement('div');d.className='toast '+type;d.innerHTML=(type==='ok'?'✅':'❌')+' '+msg;document.getElementById('toasts').appendChild(d);setTimeout(()=>d.remove(),3500);}
+function clearTrans(){document.getElementById('translateInput').value='';const r=document.getElementById('translateResult');r.className='result-placeholder';r.textContent='Your translation will appear here…';}
 
-// ── NAVIGATION ─────────────────────────────────────────
-const panelNames = {
-  home:'🏠 Dashboard', translate:'🔤 Text Translation', url:'🌐 Website Translator',
-  document:'📄 Document Translator', chat:'💬 AI Chatbot', tts:'🔊 Text to Voice',
-  stt:'🎙️ Voice to Text', video:'🎬 Video Translator', book:'📚 Book Translator'
-};
-
-function showPanel(name) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
-  document.getElementById('topbarTitle').textContent = panelNames[name] || name;
-  // highlight nav
-  document.querySelectorAll('.nav-item').forEach(n => {
-    if(n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + name + "'")) n.classList.add('active');
-  });
+async function doTranslate(){
+  const text=document.getElementById('translateInput').value.trim();
+  if(!text){toast('Please enter some text','err');return;}
+  ld('translate',true);
+  try{const res=await fetch('/api/translate/text',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,target_lang:S.langs.translate})});const data=await res.json();if(data.error)throw new Error(data.error);const r=document.getElementById('translateResult');r.className='';Object.assign(r.style,{background:'var(--cream2)',border:'1.5px solid var(--border2)',borderRadius:'var(--r-sm)',padding:'20px',minHeight:'128px',lineHeight:'1.8',fontSize:'14px',whiteSpace:'pre-wrap',wordBreak:'break-word'});r.textContent=data.translated;toast('Translation complete!');return data.translated;}
+  catch(e){toast(e.message,'err');}finally{ld('translate',false);}
 }
+async function doTranslateThenTTS(){const t=await doTranslate();if(!t)return;await ttsFrom(t,S.langs.translate,'nigerian_female','translate-audio','translate-audio-el');}
+async function ttsFrom(text,lang,voice,pid,aid){try{const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,voice:voice||S.voice,target_lang:lang,auto_translate:false})});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById(pid).classList.add('on');const a=document.getElementById(aid);a.src=data.audio_url;a.play();return true;}catch(e){toast(e.message,'err');return false;}}
 
-// ── LANGUAGE SELECTION ─────────────────────────────────
-function selectLang(el, panel) {
-  const chips = el.closest('.lang-chips');
-  chips.querySelectorAll('.lang-chip').forEach(c => c.classList.remove('active'));
-  el.classList.add('active');
-  state.langs[panel] = el.dataset.lang;
-  // sync global selector
-  document.getElementById('globalLang').value = el.dataset.lang;
-}
+async function doUrl(){const url=document.getElementById('urlInput').value.trim();if(!url){toast('Please enter a URL','err');return;}ld('url',true);try{const res=await fetch('/api/translate/url',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url,target_lang:S.langs.url})});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById('url-badge').textContent=data.target_name;document.getElementById('url-title').textContent=data.translated_title;document.getElementById('url-body').textContent=data.translated_body;document.getElementById('url-result').classList.add('on');toast('Website translated!');}catch(e){toast(e.message,'err');}finally{ld('url',false);}}
 
-function updateGlobalLang() {
-  const lang = document.getElementById('globalLang').value;
-  // sync all chip groups
-  Object.keys(state.langs).forEach(k => {
-    state.langs[k] = lang;
-    const chips = document.getElementById(k + '-chips') || document.getElementById(k === 'doc' ? 'doc-chips' : k + '-chips');
-    if(chips) {
-      chips.querySelectorAll('.lang-chip').forEach(c => {
-        c.classList.toggle('active', c.dataset.lang === lang);
-      });
-    }
-  });
-}
+async function doDoc(){const file=document.getElementById('docFile').files[0];if(!file){toast('Please select a document','err');return;}ld('doc',true);try{const fd=new FormData();fd.append('file',file);fd.append('target_lang',S.langs.doc);fd.append('action',S.docAct);const res=await fetch('/api/translate/document',{method:'POST',body:fd});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById('doc-badge').textContent=data.target_name;document.getElementById('doc-chars').textContent=(data.char_count||0)+' chars';let s='',t='';if(data.summary)s=`<p style="font-family:'Playfair Display',serif;font-size:14px;color:var(--terra);margin-bottom:10px;">📋 Summary</p><div style="white-space:pre-wrap;line-height:1.85;margin-bottom:18px;">${data.summary}</div>`;if(data.translation)t=`<p style="font-family:'Playfair Display',serif;font-size:14px;color:var(--terra);margin-bottom:10px;">📝 Translation</p><div style="white-space:pre-wrap;line-height:1.85;">${data.translation}</div>`;document.getElementById('doc-summary').innerHTML=s;document.getElementById('doc-trans').innerHTML=t;document.getElementById('doc-result').classList.add('on');toast('Document processed!');}catch(e){toast(e.message,'err');}finally{ld('doc',false);}}
 
-// ── VOICE SELECTION ────────────────────────────────────
-function selectVoice(el) {
-  document.querySelectorAll('.voice-card').forEach(v => v.classList.remove('selected'));
-  el.classList.add('selected');
-  state.selectedVoice = el.dataset.voice;
-}
+function addMsg(role,text){const d=document.createElement('div');d.className='msg msg-'+(role==='user'?'user':'bot');d.innerHTML=`<div>${text}</div><div class="msg-t">${new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</div>`;const cm=document.getElementById('chatMsgs');cm.appendChild(d);cm.scrollTop=9999;return d;}
+function clearChat(){S.chatHist=[];document.getElementById('chatMsgs').innerHTML='<div class="msg msg-bot"><div>👋 Chat cleared! How can I help?</div></div>';}
+async function sendChat(){const inp=document.getElementById('chatIn');const msg=inp.value.trim();if(!msg)return;inp.value='';addMsg('user',msg);const t=addMsg('bot','…');S.chatHist.push({role:'user',content:msg});try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,lang:S.langs.chat,history:S.chatHist})});const data=await res.json();if(data.error)throw new Error(data.error);t.querySelector('div').textContent=data.reply;S.chatHist.push({role:'assistant',content:data.reply});}catch(e){t.querySelector('div').textContent='⚠️ '+e.message;}}
 
-// ── DOC ACTION TAB ─────────────────────────────────────
-function setDocAction(action, el) {
-  state.docAction = action;
-  document.querySelectorAll('.tab-bar .tab-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-}
+async function doTTS(){const text=document.getElementById('ttsIn').value.trim();if(!text){toast('Please enter text','err');return;}const auto=document.getElementById('ttsAuto').checked;ld('tts',true);try{const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,voice:S.voice,target_lang:S.langs.tts,auto_translate:auto})});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById('tts-player').classList.add('on');const a=document.getElementById('tts-audio');a.src=data.audio_url;a.play();toast('Audio generated!');}catch(e){toast(e.message,'err');}finally{ld('tts',false);}}
 
-// ── FILE SELECTION ─────────────────────────────────────
-function fileSelected(input, dropId, nameId) {
-  const file = input.files[0];
-  if(file) {
-    document.getElementById(nameId).textContent = '📎 ' + file.name;
-    if(dropId) document.getElementById(dropId).style.borderColor = 'var(--green)';
-  }
-}
+let chunks=[];
+async function toggleRec(){const btn=document.getElementById('recBtn'),st=document.getElementById('recStatus'),pg=document.getElementById('recProg'),bar=document.getElementById('recBar');if(!S.recording){try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});S.mediaRec=new MediaRecorder(stream);chunks=[];S.mediaRec.ondataavailable=e=>chunks.push(e.data);S.mediaRec.onstop=async()=>{const blob=new Blob(chunks,{type:'audio/webm'});await sttBlob(blob);};S.mediaRec.start();S.recording=true;btn.classList.add('on');btn.textContent='⏹️';st.textContent='Recording… click to stop';pg.classList.add('on');let w=0;S.recTimer=setInterval(()=>{w=Math.min(w+1.5,95);bar.style.width=w+'%';},100);}catch(e){toast('Microphone not accessible','err');}}else{S.mediaRec.stop();S.recording=false;btn.classList.remove('on');btn.textContent='🎙️';st.textContent='Processing…';clearInterval(S.recTimer);}}
+async function sttBlob(blob){const fd=new FormData();fd.append('audio',blob,'rec.webm');fd.append('target_lang',S.langs.stt);ld('stt',true);try{const res=await fetch('/api/stt',{method:'POST',body:fd});const data=await res.json();if(data.error)throw new Error(data.error);showSTT(data);document.getElementById('recStatus').textContent='Click to start recording';document.getElementById('recProg').classList.remove('on');document.getElementById('recBar').style.width='0%';}catch(e){toast(e.message,'err');}finally{ld('stt',false);}}
+async function doSTTFile(){const file=document.getElementById('sttFile').files[0];if(!file){toast('Please select an audio file','err');return;}const fd=new FormData();fd.append('audio',file);fd.append('target_lang',S.langs.stt);ld('stt',true);try{const res=await fetch('/api/stt',{method:'POST',body:fd});const data=await res.json();if(data.error)throw new Error(data.error);showSTT(data);}catch(e){toast(e.message,'err');}finally{ld('stt',false);}}
+function showSTT(data){document.getElementById('stt-badge').textContent=data.target_name;document.getElementById('stt-orig').textContent=data.original_text;document.getElementById('stt-trans').textContent=data.translated_text;document.getElementById('stt-result').classList.add('on');toast('Transcription complete!');}
 
-// ── LOADER HELPERS ─────────────────────────────────────
-function setLoading(id, on) {
-  document.getElementById(id + '-loader').classList.toggle('active', on);
-}
+async function doVideo(){const file=document.getElementById('vidFile').files[0];if(!file){toast('Please select a video file','err');return;}ld('video',true);try{const fd=new FormData();fd.append('video',file);fd.append('target_lang',S.langs.video);fd.append('voice',document.getElementById('vidVoice').value);const res=await fetch('/api/translate/video',{method:'POST',body:fd});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById('vid-badge').textContent=data.target_name;document.getElementById('vid-orig').textContent=data.original_text;document.getElementById('vid-trans').textContent=data.translated_text;if(data.audio_url){document.getElementById('vid-audio').style.display='block';document.getElementById('vid-audio-el').src=data.audio_url;}document.getElementById('video-result').classList.add('on');toast('Video translation complete!');}catch(e){toast(e.message,'err');}finally{ld('video',false);}}
 
-// ── TOAST ──────────────────────────────────────────────
-function toast(msg, type='success') {
-  const div = document.createElement('div');
-  div.className = 'toast ' + type;
-  div.innerHTML = (type === 'success' ? '✅' : '❌') + ' ' + msg;
-  document.getElementById('toasts').appendChild(div);
-  setTimeout(() => div.remove(), 3200);
-}
+async function doBook(){const file=document.getElementById('bookFile').files[0];if(!file){toast('Please select a book/document','err');return;}ld('book',true);try{const fd=new FormData();fd.append('file',file);fd.append('target_lang',S.langs.book);const res=await fetch('/api/translate/book',{method:'POST',body:fd});const data=await res.json();if(data.error)throw new Error(data.error);document.getElementById('book-badge').textContent=data.target_name;document.getElementById('book-wc').textContent=(data.word_count||0).toLocaleString()+' words';document.getElementById('book-sum').textContent=data.summary;document.getElementById('book-sample').textContent=data.translated_sample;document.getElementById('book-result').classList.add('on');toast('Book analyzed & translated!');}catch(e){toast(e.message,'err');}finally{ld('book',false);}}
 
-// ── CLEAR ──────────────────────────────────────────────
-function clearField(inputId, resultId) {
-  document.getElementById(inputId).value = '';
-  const r = document.getElementById(resultId);
-  r.style.color = 'var(--muted)';
-  r.style.fontStyle = 'italic';
-  r.textContent = 'Translation will appear here...';
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 1: TEXT TRANSLATION
-// ─────────────────────────────────────────────────────────
-async function doTranslate() {
-  const text = document.getElementById('translateInput').value.trim();
-  if(!text) { toast('Please enter some text', 'error'); return; }
-  setLoading('translate', true);
-  try {
-    const res = await fetch('/api/translate/text', {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ text, target_lang: state.langs.translate })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    const r = document.getElementById('translateResult');
-    r.style.color = 'var(--text)'; r.style.fontStyle = 'normal';
-    r.textContent = data.translated;
-    toast('Translation complete!');
-    return data.translated;
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('translate', false);
-  }
-}
-
-async function doTranslateThenTTS() {
-  const translated = await doTranslate();
-  if(!translated) return;
-  await doTTSFromText(translated, state.langs.translate, 'nigerian_female', 'translate-audio', 'translate-audio-el');
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 2: URL TRANSLATION
-// ─────────────────────────────────────────────────────────
-async function doUrlTranslate() {
-  const url = document.getElementById('urlInput').value.trim();
-  if(!url) { toast('Please enter a URL', 'error'); return; }
-  setLoading('url', true);
-  try {
-    const res = await fetch('/api/translate/url', {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ url, target_lang: state.langs.url })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    document.getElementById('url-lang-badge').textContent = data.target_name;
-    document.getElementById('url-title').textContent = data.translated_title;
-    document.getElementById('url-body').textContent = data.translated_body;
-    const r = document.getElementById('url-result');
-    r.classList.add('visible');
-    toast('Website translated!');
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('url', false);
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 3: DOCUMENT TRANSLATION
-// ─────────────────────────────────────────────────────────
-async function doDocTranslate() {
-  const file = document.getElementById('docFile').files[0];
-  if(!file) { toast('Please select a document', 'error'); return; }
-  setLoading('doc', true);
-  try {
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('target_lang', state.langs.doc);
-    fd.append('action', state.docAction);
-    const res = await fetch('/api/translate/document', { method:'POST', body: fd });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    document.getElementById('doc-lang-badge').textContent = data.target_name;
-    document.getElementById('doc-char-count').textContent = (data.char_count||0) + ' chars';
-    let summaryHtml = '', translationHtml = '';
-    if(data.summary) summaryHtml = `<div style="margin-bottom:16px"><strong style="font-size:11px;color:var(--gold)">📋 SUMMARY</strong><div style="margin-top:8px;white-space:pre-wrap;line-height:1.8;">${data.summary}</div></div>`;
-    if(data.translation) translationHtml = `<div><strong style="font-size:11px;color:var(--gold)">📝 TRANSLATION</strong><div style="margin-top:8px;white-space:pre-wrap;line-height:1.8;">${data.translation}</div></div>`;
-    document.getElementById('doc-summary').innerHTML = summaryHtml;
-    document.getElementById('doc-translation').innerHTML = translationHtml;
-    document.getElementById('doc-result').classList.add('visible');
-    toast('Document processed!');
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('doc', false);
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 4: CHATBOT
-// ─────────────────────────────────────────────────────────
-function appendMsg(role, text) {
-  const div = document.createElement('div');
-  div.className = 'msg msg-' + (role === 'user' ? 'user' : 'bot');
-  div.innerHTML = `<div>${text}</div><div class="msg-time">${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div>`;
-  document.getElementById('chatMessages').appendChild(div);
-  document.getElementById('chatMessages').scrollTop = 9999;
-  return div;
-}
-
-function clearChat() {
-  state.chatHistory = [];
-  const cm = document.getElementById('chatMessages');
-  cm.innerHTML = '<div class="msg msg-bot"><div>👋 Chat cleared! How can I help you?</div></div>';
-}
-
-async function sendChat() {
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if(!msg) return;
-  input.value = '';
-  appendMsg('user', msg);
-  const typing = appendMsg('bot', '...');
-  state.chatHistory.push({role:'user', content:msg});
-  try {
-    const res = await fetch('/api/chat', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ message:msg, lang: state.langs.chat, history: state.chatHistory })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    typing.querySelector('div').textContent = data.reply;
-    state.chatHistory.push({role:'assistant', content:data.reply});
-  } catch(e) {
-    typing.querySelector('div').textContent = '⚠️ ' + e.message;
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 5: TEXT TO SPEECH
-// ─────────────────────────────────────────────────────────
-async function doTTSFromText(text, lang, voice, playerId, audioElId) {
-  try {
-    const res = await fetch('/api/tts', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ text, voice: voice || state.selectedVoice, target_lang: lang, auto_translate: false })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    const player = document.getElementById(playerId);
-    player.classList.add('visible');
-    const audio = document.getElementById(audioElId);
-    audio.src = data.audio_url;
-    audio.play();
-    return true;
-  } catch(e) {
-    toast(e.message, 'error');
-    return false;
-  }
-}
-
-async function doTTS() {
-  const text = document.getElementById('ttsInput').value.trim();
-  if(!text) { toast('Please enter text', 'error'); return; }
-  const autoTranslate = document.getElementById('ttsAutoTranslate').checked;
-  setLoading('tts', true);
-  try {
-    const res = await fetch('/api/tts', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ text, voice: state.selectedVoice, target_lang: state.langs.tts, auto_translate: autoTranslate })
-    });
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    document.getElementById('tts-player').classList.add('visible');
-    const audio = document.getElementById('tts-audio-el');
-    audio.src = data.audio_url;
-    audio.play();
-    toast('Audio generated!');
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('tts', false);
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 6: SPEECH TO TEXT
-// ─────────────────────────────────────────────────────────
-let audioChunks = [];
-
-async function toggleRecord() {
-  const btn = document.getElementById('recordBtn');
-  const status = document.getElementById('recordStatus');
-  const progress = document.getElementById('recordProgress');
-  const bar = document.getElementById('recordBar');
-
-  if(!state.recording) {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({audio: true});
-      state.mediaRecorder = new MediaRecorder(stream);
-      audioChunks = [];
-      state.mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-      state.mediaRecorder.onstop = async () => {
-        const blob = new Blob(audioChunks, {type:'audio/webm'});
-        await doSTTFromBlob(blob);
-      };
-      state.mediaRecorder.start();
-      state.recording = true;
-      btn.classList.add('recording');
-      btn.textContent = '⏹️';
-      status.textContent = 'Recording... click to stop';
-      progress.style.display = 'block';
-      let w = 0;
-      state.recordTimer = setInterval(() => { w = Math.min(w+2,95); bar.style.width=w+'%'; }, 100);
-    } catch(e) {
-      toast('Microphone not accessible', 'error');
-    }
-  } else {
-    state.mediaRecorder.stop();
-    state.recording = false;
-    btn.classList.remove('recording');
-    btn.textContent = '🎙️';
-    status.textContent = 'Processing...';
-    clearInterval(state.recordTimer);
-  }
-}
-
-async function doSTTFromBlob(blob) {
-  const fd = new FormData();
-  fd.append('audio', blob, 'recording.webm');
-  fd.append('target_lang', state.langs.stt);
-  setLoading('stt', true);
-  try {
-    const res = await fetch('/api/stt', {method:'POST', body:fd});
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    showSTTResult(data);
-    document.getElementById('recordStatus').textContent = 'Click to start recording';
-    document.getElementById('recordProgress').style.display = 'none';
-    document.getElementById('recordBar').style.width = '0%';
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('stt', false);
-  }
-}
-
-async function doSTTFile() {
-  const file = document.getElementById('sttFile').files[0];
-  if(!file) { toast('Please select an audio file', 'error'); return; }
-  const fd = new FormData();
-  fd.append('audio', file);
-  fd.append('target_lang', state.langs.stt);
-  setLoading('stt', true);
-  try {
-    const res = await fetch('/api/stt', {method:'POST', body:fd});
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    showSTTResult(data);
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('stt', false);
-  }
-}
-
-function showSTTResult(data) {
-  document.getElementById('stt-lang-badge').textContent = data.target_name;
-  document.getElementById('stt-original').textContent = data.original_text;
-  document.getElementById('stt-translated').textContent = data.translated_text;
-  document.getElementById('stt-result').classList.add('visible');
-  toast('Transcription complete!');
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 7: VIDEO TRANSLATION
-// ─────────────────────────────────────────────────────────
-async function doVideoTranslate() {
-  const file = document.getElementById('videoFile').files[0];
-  if(!file) { toast('Please select a video file', 'error'); return; }
-  const voice = document.getElementById('videoVoice').value;
-  setLoading('video', true);
-  try {
-    const fd = new FormData();
-    fd.append('video', file);
-    fd.append('target_lang', state.langs.video);
-    fd.append('voice', voice);
-    const res = await fetch('/api/translate/video', {method:'POST', body:fd});
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    document.getElementById('video-lang-badge').textContent = data.target_name;
-    document.getElementById('video-original').textContent = data.original_text;
-    document.getElementById('video-translated').textContent = data.translated_text;
-    if(data.audio_url) {
-      document.getElementById('video-audio-section').style.display = 'block';
-      document.getElementById('video-audio-el').src = data.audio_url;
-    }
-    document.getElementById('video-result').classList.add('visible');
-    toast('Video translation complete!');
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('video', false);
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  FEATURE 8: BOOK TRANSLATION
-// ─────────────────────────────────────────────────────────
-async function doBookTranslate() {
-  const file = document.getElementById('bookFile').files[0];
-  if(!file) { toast('Please select a book/document', 'error'); return; }
-  setLoading('book', true);
-  try {
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('target_lang', state.langs.book);
-    const res = await fetch('/api/translate/book', {method:'POST', body:fd});
-    const data = await res.json();
-    if(data.error) throw new Error(data.error);
-    document.getElementById('book-lang-badge').textContent = data.target_name;
-    document.getElementById('book-word-count').textContent = (data.word_count||0).toLocaleString() + ' words';
-    document.getElementById('book-summary').style.whiteSpace = 'pre-wrap';
-    document.getElementById('book-summary').textContent = data.summary;
-    document.getElementById('book-sample').textContent = data.translated_sample;
-    document.getElementById('book-result').classList.add('visible');
-    toast('Book analyzed & translated!');
-  } catch(e) {
-    toast(e.message, 'error');
-  } finally {
-    setLoading('book', false);
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  DRAG & DROP
-// ─────────────────────────────────────────────────────────
-document.querySelectorAll('.file-drop').forEach(zone => {
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
-  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); });
-});
+document.querySelectorAll('.drop-zone').forEach(z=>{z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag');});z.addEventListener('dragleave',()=>z.classList.remove('drag'));z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');});});
+document.addEventListener('click',e=>{const sb=document.getElementById('sidebar'),ham=document.getElementById('ham');if(sb.classList.contains('open')&&!sb.contains(e.target)&&e.target!==ham)sb.classList.remove('open');});
 </script>
 </body>
 </html>
