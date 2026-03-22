@@ -161,7 +161,7 @@ export default function AuthPage() {
             Speak<br /><em className="not-italic text-[#E09060]">Africa's</em><br />Languages
           </h1>
           <p className="text-white/45 text-sm leading-relaxed max-w-sm mb-10">
-            AI-powered translation, transcription, and voice synthesis for Nigeria and East Africa's most spoken languages.
+            AI-powered translation, transcription, and voice synthesis for Africa's most spoken languages.
           </p>
           <div className="flex flex-col gap-3">
             {pills.map(({ icon: Icon, title, desc }) => (

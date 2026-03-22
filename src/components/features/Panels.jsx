@@ -38,7 +38,7 @@ export function HomePanel({ setActive }) {
             Translate, transcribe, and communicate in Nigerian Pidgin, Yoruba, Hausa, and Swahili — powered by GPT‑4o.
           </p>
           <div className="flex flex-wrap gap-3">
-            <button onClick={() => setActive('translate')} className="btn-terra text-sm px-5 py-2.5">Start Translating →</button>
+            <button onClick={() => setActive('translate')} className="btn-terra text-sm px-5 py-2.5">Start Speaking →</button>
             <button onClick={() => setActive('chat')} className="bg-white/10 text-white/70 border border-white/15 hover:bg-white/15 hover:text-white font-semibold rounded-xl text-sm px-5 py-2.5 transition-all cursor-pointer">Try Chatbot</button>
           </div>
         </div>
