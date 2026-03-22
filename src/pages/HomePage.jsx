@@ -26,9 +26,9 @@ const stats = [
 const supportedLanguages = [
   { flag: '🇳🇬', name: 'Yoruba',           speakers: '45M+',  region: 'Nigeria' },
   { flag: '🇪🇬', name: 'Egyptian Arabic',  speakers: '100M+', region: 'Egypt' },
-  { flag: '🇳🇬', name: 'Hausa',            speakers: '70M+',  region: 'West Africa' },
-  { flag: '🇰🇪', name: 'Swahili',          speakers: '200M+', region: 'East Africa' },
   { flag: '🇿🇦', name: 'Zulu',             speakers: '12M+',  region: 'South Africa' },
+  { flag: '🇰🇪', name: 'Swahili',          speakers: '200M+', region: 'East Africa' },
+  { flag: '🇳🇬', name: 'Hausa',            speakers: '70M+',  region: 'West Africa' },
   { flag: '🇳🇬', name: 'Nigerian Pidgin',  speakers: '75M+',  region: 'Nigeria' },
   { flag: '🇷🇼', name: 'Kinyarwanda',      speakers: '20M+',  region: 'Rwanda' },
   { flag: '🇸🇳', name: 'Wolof',            speakers: '12M+',  region: 'Senegal' },
